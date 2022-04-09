@@ -5,17 +5,17 @@ using UnityEngine;
 public class AnswerScript : MonoBehaviour
 {
     public bool isCorrect = false;
-    public ReadCSV readCSV;
+    public GameController gameController;
 
-    public void Answer()
+    public void checkAnswer()
     {
         if (isCorrect)
         {
-            readCSV.correct();
+            gameController.correct();
         }
         else
         {
-            readCSV.wrong();
+            gameController.wrong();
         }
     }
 }

@@ -9,11 +9,6 @@ public class ProgressBar : MonoBehaviour
     float fillSpeed = 0.5f;
     private float targetProgress = 0.0f;
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         if (slider.value < targetProgress)
