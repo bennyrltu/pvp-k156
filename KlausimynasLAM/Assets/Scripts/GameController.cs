@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Linq;
 
 public class GameController : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class GameController : MonoBehaviour
     /* rezultatø saugojimo failas */
     // gal geriau storint kiekvieno temos rezultatus atskirai, nes vis tiek leaderboardai bus atskiri
     string resultsFilePath = "Assets/Data/results.csv";
-
+    string sortedResultsFilePath = "Assets/Data/resultsSorted.csv";
     List<string> themeName = new List<string>();
     List<string> question = new List<string>();
     List<string> answerA = new List<string>();
@@ -43,12 +44,16 @@ public class GameController : MonoBehaviour
 
     /* sugaiðtas laikas sprendþiant klausimynà */
     // reikës keist, pataisius Stopwatch.cs, nes saugosim tai kaip int, sekundëmis
-    string timespan = "";
+    int timespan;
 
     void Start()
     {
         readDataFromCSV(dataFilePath, ref themeName, ref question, ref answerA, ref answerB, ref answerC, ref answerD, ref correctAnswerIndex);
         setQuestionData();
+
+        //
+        if (File.Exists(sortedResultsFilePath))
+            File.Delete(sortedResultsFilePath);
     }
 
     void setQuestionData()
@@ -77,7 +82,29 @@ public class GameController : MonoBehaviour
             GetComponent<Stopwatch>().PrintTime();
             timespan = GetComponent<Stopwatch>().CurrentTime();
             GetComponent<Stopwatch>().enabled = false;
-            writeResultsToCSV(resultsFilePath, correctAnswers, numberOfQuestions, timespan);
+
+            //Rokylo
+            //writeResultsToCSV(resultsFilePath, correctAnswers, numberOfQuestions, timespan);
+
+            Person personToAdd = new Person("Test", correctAnswers, numberOfQuestions, timespan);
+
+            WritePerson(resultsFilePath, personToAdd);
+
+            List<Person> person = readPersonData(resultsFilePath);
+
+
+            var peopleSorted = person
+                .OrderByDescending(person => person.correcqs)
+                .ThenBy(person => person.time)
+                .ThenBy(person => person.name)
+                //.Take(5)
+                .ToList();
+
+
+            foreach (Person personToWrite in peopleSorted)
+            {
+                WritePerson(sortedResultsFilePath, personToWrite);
+            }
         }
     }
 
@@ -103,14 +130,14 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("Correct Answer");
         correctAnswers++;
-        GetComponent<ProgressBar>().Increase(fillAmount());
+        GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
         setQuestionData();
     }
 
     public void wrong()
     {
         Debug.Log("Wrong Answer");
-        GetComponent<ProgressBar>().Increase(fillAmount());
+        GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
         setQuestionData();
     }
 
@@ -145,10 +172,36 @@ public class GameController : MonoBehaviour
         reader.Close();
     }
 
-    void writeResultsToCSV(string path, int correctAnswersNumber, int totalNumberOfQuestionsAnswered, string timespan)
+    //Rokylo
+    //void writeResultsToCSV(string path, int correctAnswersNumber, int totalNumberOfQuestionsAnswered, string timespan)
+    //{
+    //    StreamWriter writer = new StreamWriter(path, true);
+    //    writer.WriteLine("Theme Name" + "," + correctAnswersNumber + "," + totalNumberOfQuestionsAnswered + "," + timespan);
+    //    writer.Close();
+    //}
+
+    public List<Person> readPersonData(string fileName)
     {
-        StreamWriter writer = new StreamWriter(path, true);
-        writer.WriteLine("Theme Name" + "," + correctAnswersNumber + "," + totalNumberOfQuestionsAnswered + "," + timespan);
+        List<Person> personList = new List<Person>();
+        string[] lines = File.ReadAllLines(fileName, Encoding.GetEncoding(1257));
+        foreach (var line in lines)
+        {
+            string[] parts = line.Trim().Split(',');
+            string name = parts[0];
+            int correctqs = int.Parse(parts[1]);
+            int allqs = int.Parse(parts[2]);
+            int time = int.Parse(parts[3]);
+
+            Person person = new Person(name, correctqs, allqs, time);
+            personList.Add(person);
+        }
+        return personList;
+    }
+
+    void WritePerson(string resultsFilePath, Person person)
+    {
+        StreamWriter writer = new StreamWriter(resultsFilePath, true);
+        writer.WriteLine(person.ToString());
         writer.Close();
     }
 }

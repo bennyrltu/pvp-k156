@@ -29,9 +29,9 @@ public class Stopwatch : MonoBehaviour
         StopWatchText.text = minutes.ToString("00") + ": " + seconds.ToString("00");
     }
 
-    public string CurrentTime()
+    public int CurrentTime()
     {
-        return seconds.ToString();
+        return (int)seconds;
     }
 
     public void PrintTime()
