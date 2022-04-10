@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour
 
     /* sugaiðtas laikas sprendþiant klausimynà */
     // reikës keist, pataisius Stopwatch.cs, nes saugosim tai kaip int, sekundëmis
-    int timespan;
+    string timespan;
 
     void Start()
     {
@@ -90,21 +90,21 @@ public class GameController : MonoBehaviour
 
             WritePerson(resultsFilePath, personToAdd);
 
-            List<Person> person = readPersonData(resultsFilePath);
+            //List<Person> person = readPersonData(resultsFilePath);
 
 
-            var peopleSorted = person
-                .OrderByDescending(person => person.correcqs)
-                .ThenBy(person => person.time)
-                .ThenBy(person => person.name)
-                //.Take(5)
-                .ToList();
+            //var peopleSorted = person
+            //    .OrderByDescending(person => person.correcqs)
+            //    .ThenBy(person => person.time)
+            //    .ThenBy(person => person.name)
+            //    //.Take(5)
+            //    .ToList();
 
 
-            foreach (Person personToWrite in peopleSorted)
-            {
-                WritePerson(sortedResultsFilePath, personToWrite);
-            }
+            //foreach (Person personToWrite in peopleSorted)
+            //{
+            //    WritePerson(sortedResultsFilePath, personToWrite);
+            //}
         }
     }
 
@@ -139,11 +139,6 @@ public class GameController : MonoBehaviour
         Debug.Log("Wrong Answer");
         GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
         setQuestionData();
-    }
-
-    public float fillAmount()
-    {
-        return 1f / numberOfQuestions;
     }
 
     void readDataFromCSV(string path, ref List<string> themes, ref List<string> questions, ref List<string> answersA, ref List<string> answersB, ref List<string> answersC, ref List<string> answersD, ref List<int> correctAnswer)
@@ -190,7 +185,7 @@ public class GameController : MonoBehaviour
             string name = parts[0];
             int correctqs = int.Parse(parts[1]);
             int allqs = int.Parse(parts[2]);
-            int time = int.Parse(parts[3]);
+            string time = parts[3];
 
             Person person = new Person(name, correctqs, allqs, time);
             personList.Add(person);
