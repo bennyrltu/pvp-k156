@@ -31,7 +31,6 @@ public class Stopwatch : MonoBehaviour
 
     public string CurrentTime()
     {
-        //return (int)seconds;
         return minutes.ToString("00") + ":" + seconds.ToString("00");
     }
 
@@ -40,4 +39,8 @@ public class Stopwatch : MonoBehaviour
         Debug.Log(StopWatchText.text);
     }
 
+    public void ResetTime()
+    {
+        timer = 0.0f;
+    }
 }

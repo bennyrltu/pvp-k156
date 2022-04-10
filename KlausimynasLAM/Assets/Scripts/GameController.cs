@@ -14,7 +14,6 @@ public class GameController : MonoBehaviour
     /* rezultatø saugojimo failas */
     // gal geriau storint kiekvieno temos rezultatus atskirai, nes vis tiek leaderboardai bus atskiri
     string resultsFilePath = "Assets/Data/results.csv";
-    string sortedResultsFilePath = "Assets/Data/resultsSorted.csv";
     List<string> themeName = new List<string>();
     List<string> question = new List<string>();
     List<string> answerA = new List<string>();
@@ -57,10 +56,6 @@ public class GameController : MonoBehaviour
         readDataFromCSV(dataFilePath, ref themeName, ref question, ref answerA, ref answerB, ref answerC, ref answerD, ref correctAnswerIndex);
         setQuizName();
         setQuestionData();
-
-        //
-        if (File.Exists(sortedResultsFilePath))
-            File.Delete(sortedResultsFilePath);
     }
 
     void setQuizName()
@@ -74,9 +69,11 @@ public class GameController : MonoBehaviour
 
     void setQuestionData()
     {
+        GetComponent<Stopwatch>().enabled = true;
+        currentQuestion = Random.Range(0, question.Count);
+
         if (question.Count > 0)
         {
-            currentQuestion = Random.Range(0, question.Count);
 
             questionText.text = question[currentQuestion];
             questionNumber.text = "Klausimas " + questionIndex;
@@ -99,28 +96,9 @@ public class GameController : MonoBehaviour
             timespan = GetComponent<Stopwatch>().CurrentTime();
             GetComponent<Stopwatch>().enabled = false;
 
-            //Rokylo
-            //writeResultsToCSV(resultsFilePath, correctAnswers, numberOfQuestions, timespan);
-
             Person personToAdd = new Person("Test", correctAnswers, numberOfQuestions, timespan);
 
             WritePerson(resultsFilePath, personToAdd);
-
-            //List<Person> person = readPersonData(resultsFilePath);
-
-
-            //var peopleSorted = person
-            //    .OrderByDescending(person => person.correcqs)
-            //    .ThenBy(person => person.time)
-            //    .ThenBy(person => person.name)
-            //    //.Take(5)
-            //    .ToList();
-
-
-            //foreach (Person personToWrite in peopleSorted)
-            //{
-            //    WritePerson(sortedResultsFilePath, personToWrite);
-            //}
         }
     }
 
@@ -136,11 +114,13 @@ public class GameController : MonoBehaviour
             options[i].GetComponent<AnswerScript>().isCorrect = false;
             options[i].GetComponent<Button>().interactable = true;
             options[i].GetComponent<Image>().color = options[i].GetComponent<AnswerScript>().startColor;
-            options[i].transform.GetChild(0).GetComponent<Text>().color = options[i].GetComponent<AnswerScript>().startTextColor;
+            //options[i].transform.GetChild(0).GetComponent<Text>().color = options[i].GetComponent<AnswerScript>().startTextColor;
+            //options[i].GetComponent<Image>().color = new Color32(92, 176, 95, 255);
 
             if (correctAnswerIndex[currentQuestion] == i + 1)
             {
                 options[i].GetComponent<AnswerScript>().isCorrect = true;
+                //options[i].GetComponent<Image>().color = new Color32(92, 176, 95, 255);
             }
         }
     }
@@ -151,7 +131,6 @@ public class GameController : MonoBehaviour
         correctAnswers++;
         GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
         unclickableButtons();
-        //changeColorsOnClick();
         StartCoroutine(wait());
     }
 
@@ -160,17 +139,12 @@ public class GameController : MonoBehaviour
         Debug.Log("Wrong Answer");
         GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
         unclickableButtons();
-        //changeColorsOnClick();
         StartCoroutine(wait());
-    }
-
-    void changeColorsOnClick()
-    {
-
     }
 
     IEnumerator wait()
     {
+        GetComponent<Stopwatch>().enabled = false;
         yield return new WaitForSeconds(2);
         setQuestionData();
     }
@@ -207,32 +181,6 @@ public class GameController : MonoBehaviour
             catch { }
         }
         reader.Close();
-    }
-
-    //Rokylo
-    //void writeResultsToCSV(string path, int correctAnswersNumber, int totalNumberOfQuestionsAnswered, string timespan)
-    //{
-    //    StreamWriter writer = new StreamWriter(path, true);
-    //    writer.WriteLine("Theme Name" + "," + correctAnswersNumber + "," + totalNumberOfQuestionsAnswered + "," + timespan);
-    //    writer.Close();
-    //}
-
-    public List<Person> readPersonData(string fileName)
-    {
-        List<Person> personList = new List<Person>();
-        string[] lines = File.ReadAllLines(fileName, Encoding.GetEncoding(1257));
-        foreach (var line in lines)
-        {
-            string[] parts = line.Trim().Split(',');
-            string name = parts[0];
-            int correctqs = int.Parse(parts[1]);
-            int allqs = int.Parse(parts[2]);
-            string time = parts[3];
-
-            Person person = new Person(name, correctqs, allqs, time);
-            personList.Add(person);
-        }
-        return personList;
     }
 
     void WritePerson(string resultsFilePath, Person person)

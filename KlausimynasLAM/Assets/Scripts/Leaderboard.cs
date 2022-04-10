@@ -7,19 +7,12 @@ using System.Linq;
 
 public class Leaderboard : MonoBehaviour
 {
-    //int index = 0;
     public GameObject[] options;
 
     string resultsFilePath = "Assets/Data/results.csv";
 
-    //public Text personNameText;
-
-    //List<Person> personList = readPersonData(sortedResultsFilePath);
-
-
     void Start()
     {
-        //List<Person> personList = readPersonData(resultsFilePath);
         setAnswers();
     }
 

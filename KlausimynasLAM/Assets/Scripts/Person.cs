@@ -32,11 +32,6 @@ public class Person
         return correcqs+"/"+allqs;
     }
 
-    //public void getAllQuestions()
-    //{
-    //    return allqs;
-    //}
-
     public string getTime()
     {
         return time;
