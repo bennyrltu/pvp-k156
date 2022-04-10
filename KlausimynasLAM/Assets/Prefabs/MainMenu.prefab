@@ -294,7 +294,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Stasys Gir\u0117nas"
+  m_Text: temos pavadinimas
 --- !u!1 &687241021864731765
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,7 +1291,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ANBO ir Antanas Gustatis
+  m_Text: temos pavadinimas
 --- !u!1 &3842606559642615635
 GameObject:
   m_ObjectHideFlags: 0
@@ -3305,7 +3305,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Steponas Darius
+  m_Text: temos pavadinimas
 --- !u!1 &9034080628669571724
 GameObject:
   m_ObjectHideFlags: 0

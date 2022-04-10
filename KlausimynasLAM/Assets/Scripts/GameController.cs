@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections;
 using System.IO;
 using System.Text;
 using System.Linq;
@@ -21,6 +22,11 @@ public class GameController : MonoBehaviour
     List<string> answerC = new List<string>();
     List<string> answerD = new List<string>();
     List<int> correctAnswerIndex = new List<int>();
+    List<string> asdf = new List<string>();
+
+
+    /* klausimynu temu pavadinimu uzpildymui */
+    public GameObject[] themes;
 
     /* atsakymø variantø uþpildymui */
     public GameObject[] options;
@@ -49,11 +55,21 @@ public class GameController : MonoBehaviour
     void Start()
     {
         readDataFromCSV(dataFilePath, ref themeName, ref question, ref answerA, ref answerB, ref answerC, ref answerD, ref correctAnswerIndex);
+        setQuizName();
         setQuestionData();
 
         //
         if (File.Exists(sortedResultsFilePath))
             File.Delete(sortedResultsFilePath);
+    }
+
+    void setQuizName()
+    {
+        asdf = themeName.Distinct().ToList();
+        for (int i = 0; i < themes.Length; i++)
+        {
+            themes[i].transform.GetChild(0).GetComponent<Text>().text = asdf[i];
+        }
     }
 
     void setQuestionData()
@@ -118,6 +134,9 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < options.Length; i++)
         {
             options[i].GetComponent<AnswerScript>().isCorrect = false;
+            options[i].GetComponent<Button>().interactable = true;
+            options[i].GetComponent<Image>().color = options[i].GetComponent<AnswerScript>().startColor;
+            options[i].transform.GetChild(0).GetComponent<Text>().color = options[i].GetComponent<AnswerScript>().startTextColor;
 
             if (correctAnswerIndex[currentQuestion] == i + 1)
             {
@@ -131,14 +150,37 @@ public class GameController : MonoBehaviour
         Debug.Log("Correct Answer");
         correctAnswers++;
         GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
-        setQuestionData();
+        unclickableButtons();
+        //changeColorsOnClick();
+        StartCoroutine(wait());
     }
 
     public void wrong()
     {
         Debug.Log("Wrong Answer");
         GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
+        unclickableButtons();
+        //changeColorsOnClick();
+        StartCoroutine(wait());
+    }
+
+    void changeColorsOnClick()
+    {
+
+    }
+
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(2);
         setQuestionData();
+    }
+
+    void unclickableButtons()
+    {
+        for (int i = 0; i < options.Length; i++)
+        {
+            options[i].GetComponent<Button>().interactable = false;
+        }
     }
 
     void readDataFromCSV(string path, ref List<string> themes, ref List<string> questions, ref List<string> answersA, ref List<string> answersB, ref List<string> answersC, ref List<string> answersD, ref List<int> correctAnswer)

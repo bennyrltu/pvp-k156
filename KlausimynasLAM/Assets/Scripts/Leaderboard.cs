@@ -7,14 +7,10 @@ using System.Linq;
 
 public class Leaderboard : MonoBehaviour
 {
-    int index = 0;
+    //int index = 0;
     public GameObject[] options;
 
     string resultsFilePath = "Assets/Data/results.csv";
-
-    List<string> personName = new List<string>();
-    List<string> correctQuestions = new List<string>();
-    List<string> time = new List<string>();
 
     //public Text personNameText;
 
@@ -40,14 +36,10 @@ public class Leaderboard : MonoBehaviour
 
         for (int i = 0; i < options.Length; i++)
         {
-
-            options[index].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[index].getName();
-            options[index].transform.GetChild(2).GetComponent<Text>().text = peopleSorted[index].getCorrectAndAll();
-            options[index].transform.GetChild(4).GetComponent<Text>().text = peopleSorted[index].getTime();
-            index++;
+            options[i].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[i].getName();
+            options[i].transform.GetChild(2).GetComponent<Text>().text = peopleSorted[i].getCorrectAndAll();
+            options[i].transform.GetChild(4).GetComponent<Text>().text = peopleSorted[i].getTime();
         }
-
-
     }
 
     public List<Person> readPersonData(string fileName)
