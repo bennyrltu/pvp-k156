@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -795,6 +795,34 @@ PrefabInstance:
       propertyPath: nextPrefab
       value: 
       objectReference: {fileID: 354018339}
+    - target: {fileID: 6480546514390569020, guid: b4b798aed806cc141b88eab43446094c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480546514390569020, guid: b4b798aed806cc141b88eab43446094c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480546514390569020, guid: b4b798aed806cc141b88eab43446094c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1464217535}
+    - target: {fileID: 6480546514390569020, guid: b4b798aed806cc141b88eab43446094c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480546514390569020, guid: b4b798aed806cc141b88eab43446094c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: switchToAnotherPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480546514390569020, guid: b4b798aed806cc141b88eab43446094c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SwitchPrefab, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480546514390569020, guid: b4b798aed806cc141b88eab43446094c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7905781360574290719, guid: b4b798aed806cc141b88eab43446094c, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -1027,6 +1055,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8738879929788044116, guid: 27295bf28e11ee4469bcb6dce4540fcc, type: 3}
   m_PrefabInstance: {fileID: 36461230}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1464217530 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6239680019645896023, guid: b4b798aed806cc141b88eab43446094c, type: 3}
+  m_PrefabInstance: {fileID: 554415584}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1464217535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464217530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac3df94c5b25c5b40be80ec750cdf758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPrefab: {fileID: 33154614}
+  nextPrefab: {fileID: 1237150743}
 --- !u!1 &1575291116 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8872583418021026408, guid: 27295bf28e11ee4469bcb6dce4540fcc, type: 3}
@@ -1503,20 +1550,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2140813094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac3df94c5b25c5b40be80ec750cdf758, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentPrefab: {fileID: 353350461}
-  nextPrefab: {fileID: 33154614}
---- !u!114 &2140813100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2140813094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1823147c32709948817e944e6ff1620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -1537,7 +1570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2952066768283281278, guid: 7e61c6373c41c1148ae5379dc0c75430, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2952066768283281278, guid: 7e61c6373c41c1148ae5379dc0c75430, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -1554,7 +1587,7 @@ PrefabInstance:
     - target: {fileID: 2952066768283281278, guid: 7e61c6373c41c1148ae5379dc0c75430, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 2140813100}
+      objectReference: {fileID: 0}
     - target: {fileID: 2952066768283281278, guid: 7e61c6373c41c1148ae5379dc0c75430, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1565,19 +1598,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2952066768283281278, guid: 7e61c6373c41c1148ae5379dc0c75430, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: switchToAnotherPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 2952066768283281278, guid: 7e61c6373c41c1148ae5379dc0c75430, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: ResetScene
       objectReference: {fileID: 0}
     - target: {fileID: 2952066768283281278, guid: 7e61c6373c41c1148ae5379dc0c75430, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: switchToAnotherPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 2952066768283281278, guid: 7e61c6373c41c1148ae5379dc0c75430, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SwitchPrefab, Assembly-CSharp
+      value: Reset, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2952066768283281278, guid: 7e61c6373c41c1148ae5379dc0c75430, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Reset, Assembly-CSharp
+      value: SwitchPrefab, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2952066768283281278, guid: 7e61c6373c41c1148ae5379dc0c75430, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

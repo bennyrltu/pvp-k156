@@ -804,7 +804,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quiz Name Here
+  m_Text: ANBO
 --- !u!1 &1455438021969661086
 GameObject:
   m_ObjectHideFlags: 0
@@ -2512,7 +2512,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '#X'
+  m_Text: '#6'
 --- !u!1 &6657061757704003434
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,8 @@ public class Leaderboard : MonoBehaviour
 {
     public GameObject[] options;
 
-    string resultsFilePath = "Assets/Data/results.csv";
+    //string resultsFilePath = "Assets/Data/results.csv";
+    string resultsFilePath = Application.streamingAssetsPath + "/results.csv";
 
     void Start()
     {

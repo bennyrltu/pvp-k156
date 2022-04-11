@@ -14,7 +14,8 @@ public class SubmitUsername : MonoBehaviour
 
     public void clickSaveButton()
     {
-        string resultsFilePath = "Assets/Data/results.csv";
+        //string resultsFilePath = "Assets/Data/results.csv";
+        string resultsFilePath = Application.streamingAssetsPath + "/results.csv";
         if (TextBox.text.Length == 0)
         {
             PlayerPrefs.SetString("username", "Anonimas");

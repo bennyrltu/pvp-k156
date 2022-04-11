@@ -9,11 +9,13 @@ using System.Linq;
 public class GameController : MonoBehaviour
 {
     /* klausimynø duomenø failas */
-    string dataFilePath = "Assets/Data/data.csv";
+    //string dataFilePath = "Assets/Data/data.csv";
+    string dataFilePath = Application.streamingAssetsPath + "/data.csv";
 
     /* rezultatø saugojimo failas */
     // gal geriau storint kiekvieno temos rezultatus atskirai, nes vis tiek leaderboardai bus atskiri
-    string resultsFilePath = "Assets/Data/results.csv";
+    //string resultsFilePath = "Assets/Data/results.csv";
+
     List<string> themeName = new List<string>();
     List<string> question = new List<string>();
     List<string> answerA = new List<string>();
@@ -51,8 +53,6 @@ public class GameController : MonoBehaviour
     // reikës keist, pataisius Stopwatch.cs, nes saugosim tai kaip int, sekundëmis
     string timespan;
 
-    //GameObject resultsPrefab = (GameObject)Resources.Load("QuizResults", typeof(GameObject));
-    //GameObject quizPrefab = (GameObject)Resources.Load("Quiz.prefab", typeof(GameObject));.
     public GameObject quizPrefab;
     public GameObject usernamePrefab;
 
@@ -61,10 +61,6 @@ public class GameController : MonoBehaviour
         readDataFromCSV(dataFilePath, ref themeName, ref question, ref answerA, ref answerB, ref answerC, ref answerD, ref correctAnswerIndex);
         setQuizName();
         setQuestionData();
-        //var resultsPrefab = (GameObject)Resources.Load("QuizResults", typeof(GameObject));
-        //var quizPrefab = (GameObject)Resources.Load("Quiz.prefab", typeof(GameObject));
-        //GameObject resultsPrefab = (GameObject)Resources.Load("QuizResults", typeof(GameObject));
-        //GameObject quizPrefab = (GameObject)Resources.Load("Quiz.prefab", typeof(GameObject));
     }
 
     void setQuizName()
@@ -194,10 +190,10 @@ public class GameController : MonoBehaviour
         reader.Close();
     }
 
-    public void WritePerson(string resultsFilePath, string enteredName)
+    public void WritePerson(string resultsPath, string enteredName)
     {
         Person personToAdd = new Person(enteredName, correctAnswers, numberOfQuestions, timespan);
-        StreamWriter writer = new StreamWriter(resultsFilePath, true);
+        StreamWriter writer = new StreamWriter(resultsPath, true, Encoding.GetEncoding(1257));
         writer.WriteLine(personToAdd.ToString());
         writer.Close();
     }
