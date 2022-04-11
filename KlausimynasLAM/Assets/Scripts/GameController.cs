@@ -51,11 +51,20 @@ public class GameController : MonoBehaviour
     // reikës keist, pataisius Stopwatch.cs, nes saugosim tai kaip int, sekundëmis
     string timespan;
 
+    //GameObject resultsPrefab = (GameObject)Resources.Load("QuizResults", typeof(GameObject));
+    //GameObject quizPrefab = (GameObject)Resources.Load("Quiz.prefab", typeof(GameObject));.
+    public GameObject quizPrefab;
+    public GameObject usernamePrefab;
+
     void Start()
     {
         readDataFromCSV(dataFilePath, ref themeName, ref question, ref answerA, ref answerB, ref answerC, ref answerD, ref correctAnswerIndex);
         setQuizName();
         setQuestionData();
+        //var resultsPrefab = (GameObject)Resources.Load("QuizResults", typeof(GameObject));
+        //var quizPrefab = (GameObject)Resources.Load("Quiz.prefab", typeof(GameObject));
+        //GameObject resultsPrefab = (GameObject)Resources.Load("QuizResults", typeof(GameObject));
+        //GameObject quizPrefab = (GameObject)Resources.Load("Quiz.prefab", typeof(GameObject));
     }
 
     void setQuizName()
@@ -95,10 +104,12 @@ public class GameController : MonoBehaviour
             GetComponent<Stopwatch>().PrintTime();
             timespan = GetComponent<Stopwatch>().CurrentTime();
             GetComponent<Stopwatch>().enabled = false;
+            //quizPrefab.SetActive(false);
+            //resultsPrefab.SetActive(true);
+            //Person personToAdd = new Person("Test", correctAnswers, numberOfQuestions, timespan);
 
-            Person personToAdd = new Person("Test", correctAnswers, numberOfQuestions, timespan);
-
-            WritePerson(resultsFilePath, personToAdd);
+            //WritePerson(resultsFilePath);
+            ChangePrefabs(quizPrefab, usernamePrefab);
         }
     }
 
@@ -183,10 +194,23 @@ public class GameController : MonoBehaviour
         reader.Close();
     }
 
-    void WritePerson(string resultsFilePath, Person person)
+    public void WritePerson(string resultsFilePath, string enteredName)
     {
+        Person personToAdd = new Person(enteredName, correctAnswers, numberOfQuestions, timespan);
         StreamWriter writer = new StreamWriter(resultsFilePath, true);
-        writer.WriteLine(person.ToString());
+        writer.WriteLine(personToAdd.ToString());
         writer.Close();
+    }
+
+    public void setResults(Text a, Text b)
+    {
+        a.text = correctAnswers + "/" + numberOfQuestions;
+        b.text = timespan + " min.";
+    }
+
+    public void ChangePrefabs(GameObject prefab1, GameObject prefab2)
+    {
+        prefab1.SetActive(false);
+        prefab2.SetActive(true);
     }
 }

@@ -16,7 +16,7 @@ public class Leaderboard : MonoBehaviour
         setAnswers();
     }
 
-    void setAnswers()
+    public void setAnswers()
     {
         List<Person> personList = readPersonData(resultsFilePath);
 
