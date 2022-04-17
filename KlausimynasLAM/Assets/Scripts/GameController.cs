@@ -184,7 +184,7 @@ public class GameController : MonoBehaviour
     void readDataFromCSV(string path, ref List<string> themes, ref List<string> questions, ref List<string> answersA, ref List<string> answersB, ref List<string> answersC, ref List<string> answersD, ref List<int> correctAnswer, ref List<string> imagepaths)
     {
         string line;
-        StreamReader reader = new StreamReader(path, Encoding.UTF8);
+        StreamReader reader = new StreamReader(path, Encoding.BigEndianUnicode);
         reader.ReadLine();
 
         while ((line = reader.ReadLine()) != null)
@@ -212,7 +212,7 @@ public class GameController : MonoBehaviour
     public void WritePerson(string resultsPath, string enteredName)
     {
         Person personToAdd = new Person(enteredName, correctAnswers, numberOfQuestions, timespan);
-        StreamWriter writer = new StreamWriter(resultsPath, true, Encoding.UTF8);
+        StreamWriter writer = new StreamWriter(resultsPath, true, Encoding.BigEndianUnicode);
         writer.WriteLine(personToAdd.ToString());
         writer.Close();
     }

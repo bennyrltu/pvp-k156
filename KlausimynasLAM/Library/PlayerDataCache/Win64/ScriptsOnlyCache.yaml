@@ -526,7 +526,7 @@ ScriptsOnlyBuild:
     className: TMP_Settings
   - hash:
       serializedVersion: 2
-      Hash: 08f113a06956e7371b69241a6a0d181a
+      Hash: eed87bd9be7de6189dc79b82e2930af2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameController
@@ -587,4 +587,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/B/Desktop/LAM_Klausimynas/KlausimynasLAM.exe
+  playerPath: C:/Users/B/Desktop/dylan/KlausimynasLAM.exe

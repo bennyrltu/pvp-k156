@@ -39,7 +39,7 @@ public class Leaderboard : MonoBehaviour
     public List<Person> readPersonData(string fileName)
     {
         List<Person> personList = new List<Person>();
-        string[] lines = File.ReadAllLines(fileName, Encoding.UTF8);
+        string[] lines = File.ReadAllLines(fileName, Encoding.BigEndianUnicode);
         foreach (var line in lines)
         {
             string[] parts = line.Trim().Split(',');
