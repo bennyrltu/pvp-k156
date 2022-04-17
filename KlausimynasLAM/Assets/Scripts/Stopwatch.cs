@@ -8,11 +8,12 @@ public class Stopwatch : MonoBehaviour
     float seconds;
     float minutes;
 
+
     [SerializeField] Text StopWatchText;
     // Start is called before the first frame update
     void Start()
     {
-        timer = 0.0f;
+        timer=0.0f;
     }
 
     // Update is called once per frame
@@ -23,10 +24,10 @@ public class Stopwatch : MonoBehaviour
 
     void Calc()
     {
-        timer += Time.deltaTime;
-        seconds = (int)(timer % 60);
-        minutes = (int)((timer / 60) % 60);
-        StopWatchText.text = minutes.ToString("00") + ": " + seconds.ToString("00");
+            timer += Time.deltaTime;
+            seconds = (int)(timer % 60);
+            minutes = (int)((timer / 60) % 60);
+            StopWatchText.text = minutes.ToString("00") + ": " + seconds.ToString("00");
     }
 
     public string CurrentTime()
@@ -38,7 +39,6 @@ public class Stopwatch : MonoBehaviour
     {
         Debug.Log(StopWatchText.text);
     }
-
     public void ResetTime()
     {
         timer = 0.0f;
