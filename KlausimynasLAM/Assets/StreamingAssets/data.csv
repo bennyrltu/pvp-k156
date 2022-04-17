@@ -1,10 +1,10 @@
-TEMA;KLAUSIMAS;VARIANTAS A;VARIANTAS B;VARIANTAS C;VARIANTAS D;TEISINGAS ATSAKYMAS
-ANBO;Kokiame aukðtyje skrido ANBO-III lëktuvas?;4km;2.5km;3km;1km;3
-ANBO;Kas konstravo ANBO lëktuvus?;Steponas Darius;Stasys Girënas;Vincas Kudirka;Antanas Gustaitis;4
-ANBO;Kuriais metais buvo pagamintas ANBO-I lëktuvas?;1925;1927;1926;1924;1
-Steponas Darius;Kuriais metais gimë Steponas Darius?;1933;1899;1896;1898;3
-Steponas Darius;Dël kokios prieþasties Steponas Darius þuvo?;Infarktas;Lëktuvo suduþimas;Dþiova;Inkstø nepakankamumas;2
-Steponas Darius;Kas buvo antrasis pilotas Lituanica skrydþio metu?;Antanas Gustaitis;Vincas Krëvë;Kazimieras Barðauskas;Stasys Girënas;4
-Stasys Girënas;Ant kurio litø banknoto buvo áamþintas S. Girënas kartu su S. Dariumi?;20;50;10;100;3
-Stasys Girënas;Kuriame amþiuje gimë S. Girënas?;XIX;XVIII;X;XI;1
-Stasys Girënas;Kurá vandenynà S. Girënas kartu S. Dariumi perskrido?;Ramøjá;Atlanto;Indijos;Arkties;2
+TEMA;KLAUSIMAS;VARIANTAS A;VARIANTAS B;VARIANTAS C;VARIANTAS D;TEISINGAS ATSAKYMAS;IMAGEPATH
+ANBO;Kokiame aukstyje skrido ANBO-III lektuvas?;4km;2.5km;3km;1km;3;
+ANBO;Kas konstravo ANBO lektuvus?;Steponas Darius;Stasys Girenas;Vincas Kudirka;Antanas Gustaitis;4;
+ANBO;Kuriais metais buvo pagamintas ANBO-I lektuvas?;1925;1927;1926;1924;1;
+Steponas Darius;Kuriais metais gime Steponas Darius?;1933;1899;1896;1898;3;
+Steponas Darius;Del kokios priezasties Steponas Darius zuvo?;Infarktas;Lektuvo suduzimas;Dziova;Inkstu nepakankamumas;2;
+Steponas Darius;Kas buvo antrasis pilotas Lituanica skrydzio metu?;Antanas Gustaitis;Vincas Kreve;Kazimieras Barsauskas;Stasys Girenas;4;
+Stasys Girenas;Ant kurio litu banknoto buvo iamzintas S. Girenas kartu su S. Dariumi?;20;50;10;100;3;1.png
+Stasys Girenas;Kuriame amziuje gime S. Girenas?;XIX;XVIII;X;XI;1;2.png
+Stasys Girenas;Kuri vandenyna S. Girenas kartu S. Dariumi perskrido?;Ramuji;Atlanto;Indijos;Arkties;2;3.png

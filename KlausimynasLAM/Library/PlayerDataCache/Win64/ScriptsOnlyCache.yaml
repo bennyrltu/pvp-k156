@@ -13,8 +13,6 @@ ScriptsOnlyBuild:
     - Unity.Cloud.Collaborate.UserInterface.CollaborateWindow
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
-    Unity.Timeline.Editor.dll:
-    - TimelineProjectSettings
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -62,45 +60,45 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1440}
     - Class: 114
-      Script: {instanceID: 1504}
+      Script: {instanceID: 1484}
     - Class: 114
-      Script: {instanceID: 1656}
+      Script: {instanceID: 1636}
     - Class: 114
-      Script: {instanceID: 2330}
+      Script: {instanceID: 2310}
     - Class: 114
-      Script: {instanceID: 2444}
+      Script: {instanceID: 2424}
     - Class: 114
-      Script: {instanceID: 2632}
+      Script: {instanceID: 2612}
     - Class: 114
-      Script: {instanceID: 2662}
+      Script: {instanceID: 2642}
     - Class: 114
-      Script: {instanceID: 2738}
+      Script: {instanceID: 2718}
     - Class: 114
-      Script: {instanceID: 2808}
+      Script: {instanceID: 2788}
     - Class: 114
-      Script: {instanceID: 2818}
+      Script: {instanceID: 2798}
     - Class: 114
-      Script: {instanceID: 2858}
+      Script: {instanceID: 2838}
     - Class: 114
-      Script: {instanceID: 2898}
+      Script: {instanceID: 2878}
     - Class: 114
-      Script: {instanceID: 3046}
+      Script: {instanceID: 3026}
     - Class: 114
-      Script: {instanceID: 3056}
+      Script: {instanceID: 3036}
     - Class: 114
-      Script: {instanceID: 3162}
+      Script: {instanceID: 3142}
     - Class: 114
-      Script: {instanceID: 3196}
+      Script: {instanceID: 3176}
     - Class: 114
-      Script: {instanceID: 3622}
+      Script: {instanceID: 3602}
     - Class: 114
-      Script: {instanceID: 3754}
+      Script: {instanceID: 3734}
     - Class: 114
-      Script: {instanceID: 3874}
+      Script: {instanceID: 3854}
     - Class: 114
-      Script: {instanceID: 3908}
+      Script: {instanceID: 3888}
     - Class: 114
-      Script: {instanceID: 3920}
+      Script: {instanceID: 3900}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -589,4 +587,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/Aorus/Desktop/sada/KlausimynasLAM.exe
+  playerPath: C:/Users/B/Desktop/LAM_Klausimynas/KlausimynasLAM.exe

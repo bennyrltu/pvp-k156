@@ -23,7 +23,8 @@ public class GameController : MonoBehaviour
     List<string> answerC = new List<string>();
     List<string> answerD = new List<string>();
     List<int> correctAnswerIndex = new List<int>();
-    List<string> asdf = new List<string>();
+    List<string> asdf = new List<string>(); //?
+    List<string> imagepaths = new List<string>();
 
 
     /* klausimynu temu pavadinimu uzpildymui */
@@ -55,10 +56,12 @@ public class GameController : MonoBehaviour
 
     public GameObject quizPrefab;
     public GameObject usernamePrefab;
+    Texture2D myTexture;
+    public GameObject rawImage;
 
     void Start()
     {
-        readDataFromCSV(dataFilePath, ref themeName, ref question, ref answerA, ref answerB, ref answerC, ref answerD, ref correctAnswerIndex);
+        readDataFromCSV(dataFilePath, ref themeName, ref question, ref answerA, ref answerB, ref answerC, ref answerD, ref correctAnswerIndex, ref imagepaths);
         setQuizName();
         setQuestionData();
     }
@@ -75,6 +78,7 @@ public class GameController : MonoBehaviour
     void setQuestionData()
     {
         GetComponent<Stopwatch>().enabled = true;
+        rawImage.SetActive(false);
         currentQuestion = Random.Range(0, question.Count);
 
         if (question.Count > 0)
@@ -84,6 +88,18 @@ public class GameController : MonoBehaviour
             questionNumber.text = "Klausimas " + questionIndex;
             questionCount.text = "/" + numberOfQuestions;
 
+
+            if (imagepaths[currentQuestion].Length != 0)
+            {
+                string filename = Application.streamingAssetsPath + "/Images/" + imagepaths[currentQuestion];
+                rawImage.SetActive(true);
+                Debug.Log(filename);
+                var rawData = File.ReadAllBytes(filename);
+                Texture2D tex = new Texture2D(0, 0);
+                tex.LoadImage(rawData);
+               rawImage.GetComponent<RawImage>().texture = tex;
+            }
+
             setAnswers();
             themeName.RemoveAt(currentQuestion);
             question.RemoveAt(currentQuestion);
@@ -92,6 +108,7 @@ public class GameController : MonoBehaviour
             answerC.RemoveAt(currentQuestion);
             answerD.RemoveAt(currentQuestion);
             correctAnswerIndex.RemoveAt(currentQuestion);
+            imagepaths.RemoveAt(currentQuestion);
             questionIndex++;
         }
         else
@@ -164,10 +181,10 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void readDataFromCSV(string path, ref List<string> themes, ref List<string> questions, ref List<string> answersA, ref List<string> answersB, ref List<string> answersC, ref List<string> answersD, ref List<int> correctAnswer)
+    void readDataFromCSV(string path, ref List<string> themes, ref List<string> questions, ref List<string> answersA, ref List<string> answersB, ref List<string> answersC, ref List<string> answersD, ref List<int> correctAnswer, ref List<string> imagepaths)
     {
         string line;
-        StreamReader reader = new StreamReader(path, Encoding.GetEncoding(1257));
+        StreamReader reader = new StreamReader(path, Encoding.UTF8);
         reader.ReadLine();
 
         while ((line = reader.ReadLine()) != null)
@@ -183,6 +200,8 @@ public class GameController : MonoBehaviour
                 answersC.Add(parts[4]);
                 answersD.Add(parts[5]);
                 correctAnswer.Add(int.Parse(parts[6]));
+                imagepaths.Add(parts[7]);
+
                 numberOfQuestions++;
             }
             catch { }
@@ -193,7 +212,7 @@ public class GameController : MonoBehaviour
     public void WritePerson(string resultsPath, string enteredName)
     {
         Person personToAdd = new Person(enteredName, correctAnswers, numberOfQuestions, timespan);
-        StreamWriter writer = new StreamWriter(resultsPath, true, Encoding.GetEncoding(1257));
+        StreamWriter writer = new StreamWriter(resultsPath, true, Encoding.UTF8);
         writer.WriteLine(personToAdd.ToString());
         writer.Close();
     }
