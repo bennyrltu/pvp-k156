@@ -12,19 +12,9 @@ public class GameController : MonoBehaviour
     //string dataFilePath = "Assets/Data/data.csv";
     string dataFilePath = Application.streamingAssetsPath + "/data.csv";
 
-    /* rezultatø saugojimo failas */
-    // gal geriau storint kiekvieno temos rezultatus atskirai, nes vis tiek leaderboardai bus atskiri
-    //string resultsFilePath = "Assets/Data/results.csv";
+    List<Question> questionList = new List<Question>();
 
-    List<string> themeName = new List<string>();
-    List<string> question = new List<string>();
-    List<string> answerA = new List<string>();
-    List<string> answerB = new List<string>();
-    List<string> answerC = new List<string>();
-    List<string> answerD = new List<string>();
-    List<int> correctAnswerIndex = new List<int>();
-    List<string> asdf = new List<string>(); //?
-    List<string> imagepaths = new List<string>();
+    int totalQuestions = 0;
 
 
     /* klausimynu temu pavadinimu uzpildymui */
@@ -61,17 +51,22 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        readDataFromCSV(dataFilePath, ref themeName, ref question, ref answerA, ref answerB, ref answerC, ref answerD, ref correctAnswerIndex, ref imagepaths);
+        questionList = readQuestionData(dataFilePath);
         setQuizName();
-        setQuestionData();
+        setQuestionData();   
     }
 
     void setQuizName()
     {
-        asdf = themeName.Distinct().ToList();
-        for (int i = 0; i < themes.Length; i++)
+        List<Question> distinctPeople = questionList
+            .GroupBy(p => p.themeName)
+            .Select(g => g.First())
+            .ToList();
+
+        totalQuestions = distinctPeople.Count;
+        for (int i = 0; i < distinctPeople.Count; i++)
         {
-            themes[i].transform.GetChild(0).GetComponent<Text>().text = asdf[i];
+            themes[i].transform.GetChild(0).GetComponent<Text>().text = distinctPeople[i].getThemeName();
         }
     }
 
@@ -79,19 +74,17 @@ public class GameController : MonoBehaviour
     {
         GetComponent<Stopwatch>().enabled = true;
         rawImage.SetActive(false);
-        currentQuestion = Random.Range(0, question.Count);
-
-        if (question.Count > 0)
+        currentQuestion = Random.Range(0, questionList.Count);
+        if (questionList.Count > 0)
         {
 
-            questionText.text = question[currentQuestion];
+            questionText.text = questionList[currentQuestion].getQuestion();
             questionNumber.text = "Klausimas " + questionIndex;
-            questionCount.text = "/" + numberOfQuestions;
-
-
-            if (imagepaths[currentQuestion].Length != 0)
+            questionCount.text = "/" + totalQuestions;
+            questionCount.text = "3";
+            if (questionList[currentQuestion].getPicName().Length != 0)
             {
-                string filename = Application.streamingAssetsPath + "/Images/" + imagepaths[currentQuestion];
+                string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].getPicName();
                 rawImage.SetActive(true);
                 Debug.Log(filename);
                 var rawData = File.ReadAllBytes(filename);
@@ -101,15 +94,7 @@ public class GameController : MonoBehaviour
             }
 
             setAnswers();
-            themeName.RemoveAt(currentQuestion);
-            question.RemoveAt(currentQuestion);
-            answerA.RemoveAt(currentQuestion);
-            answerB.RemoveAt(currentQuestion);
-            answerC.RemoveAt(currentQuestion);
-            answerD.RemoveAt(currentQuestion);
-            correctAnswerIndex.RemoveAt(currentQuestion);
-            imagepaths.RemoveAt(currentQuestion);
-            questionIndex++;
+            questionList = questionList.Where(x => x.themeName != questionList[currentQuestion].getThemeName()).ToList();
         }
         else
         {
@@ -117,21 +102,16 @@ public class GameController : MonoBehaviour
             GetComponent<Stopwatch>().PrintTime();
             timespan = GetComponent<Stopwatch>().CurrentTime();
             GetComponent<Stopwatch>().enabled = false;
-            //quizPrefab.SetActive(false);
-            //resultsPrefab.SetActive(true);
-            //Person personToAdd = new Person("Test", correctAnswers, numberOfQuestions, timespan);
-
-            //WritePerson(resultsFilePath);
             ChangePrefabs(quizPrefab, usernamePrefab);
         }
     }
 
     void setAnswers()
     {
-        options[0].transform.GetChild(0).GetComponent<Text>().text = answerA[currentQuestion];
-        options[1].transform.GetChild(0).GetComponent<Text>().text = answerB[currentQuestion];
-        options[2].transform.GetChild(0).GetComponent<Text>().text = answerC[currentQuestion];
-        options[3].transform.GetChild(0).GetComponent<Text>().text = answerD[currentQuestion];
+        options[0].transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].getOpt1();
+        options[1].transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].getOpt2();
+        options[2].transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].getOpt3();
+        options[3].transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].getOpt4();
 
         for (int i = 0; i < options.Length; i++)
         {
@@ -140,8 +120,9 @@ public class GameController : MonoBehaviour
             options[i].GetComponent<Image>().color = options[i].GetComponent<AnswerScript>().startColor;
             //options[i].transform.GetChild(0).GetComponent<Text>().color = options[i].GetComponent<AnswerScript>().startTextColor;
             //options[i].GetComponent<Image>().color = new Color32(92, 176, 95, 255);
+            //Debug.Log(correctAnswerIndex[currentQuestion]);
 
-            if (correctAnswerIndex[currentQuestion] == i + 1)
+            if (questionList[currentQuestion].getCorrectOpt() == (i + 1).ToString())
             {
                 options[i].GetComponent<AnswerScript>().isCorrect = true;
                 //options[i].GetComponent<Image>().color = new Color32(92, 176, 95, 255);
@@ -153,7 +134,7 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("Correct Answer");
         correctAnswers++;
-        GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
+        GetComponent<ProgressBar>().Increase(1f/totalQuestions);
         unclickableButtons();
         StartCoroutine(wait());
     }
@@ -161,7 +142,7 @@ public class GameController : MonoBehaviour
     public void wrong()
     {
         Debug.Log("Wrong Answer");
-        GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
+        GetComponent<ProgressBar>().Increase(1f/totalQuestions);
         unclickableButtons();
         StartCoroutine(wait());
     }
@@ -181,33 +162,32 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void readDataFromCSV(string path, ref List<string> themes, ref List<string> questions, ref List<string> answersA, ref List<string> answersB, ref List<string> answersC, ref List<string> answersD, ref List<int> correctAnswer, ref List<string> imagepaths)
-    {
-        string line;
-        StreamReader reader = new StreamReader(path, Encoding.BigEndianUnicode);
-        reader.ReadLine();
+    //void readDataFromCSV(string path, ref List<string> themes, ref List<string> questions, ref List<string> answersA, ref List<string> answersB, ref List<string> answersC, ref List<string> answersD, ref List<int> correctAnswer, ref List<string> imagepaths)
+    //{
+    //    string line;
+    //    StreamReader reader = new StreamReader(path, Encoding.BigEndianUnicode);
+    //    reader.ReadLine();
 
-        while ((line = reader.ReadLine()) != null)
-        {
-            try
-            {
-                string[] parts = line.Trim().Split(';');
+    //    while ((line = reader.ReadLine()) != null)
+    //    {
+    //        try
+    //        {
+    //            string[] parts = line.Trim().Split(';');
 
-                themes.Add(parts[0]);
-                questions.Add(parts[1]);
-                answersA.Add(parts[2]);
-                answersB.Add(parts[3]);
-                answersC.Add(parts[4]);
-                answersD.Add(parts[5]);
-                correctAnswer.Add(int.Parse(parts[6]));
-                imagepaths.Add(parts[7]);
-
-                numberOfQuestions++;
-            }
-            catch { }
-        }
-        reader.Close();
-    }
+    //            themes.Add(parts[0]);
+    //            questions.Add(parts[1]);
+    //            answersA.Add(parts[2]);
+    //            answersB.Add(parts[3]);
+    //            answersC.Add(parts[4]);
+    //            answersD.Add(parts[5]);
+    //            correctAnswer.Add(int.Parse(parts[6]));
+    //            imagepaths.Add(parts[7]);
+    //            numberOfQuestions++;
+    //        }
+    //        catch { }
+    //    }
+    //    reader.Close();
+    //}
 
     public void WritePerson(string resultsPath, string enteredName)
     {
@@ -227,5 +207,27 @@ public class GameController : MonoBehaviour
     {
         prefab1.SetActive(false);
         prefab2.SetActive(true);
+    }
+
+    public List<Question> readQuestionData(string fileName)
+    {
+        List<Question> questionList = new List<Question>();
+        string[] lines = File.ReadAllLines(fileName, Encoding.BigEndianUnicode).Skip(1).ToArray();
+        foreach (var line in lines)
+        {
+            string[] parts = line.Trim().Split(';');
+            string themeName = parts[0];
+            string question = parts[1];
+            string opt1 = parts[2];
+            string opt2 = parts[3];
+            string opt3 = parts[4];
+            string opt4 = parts[5];
+            string correct = parts[6];
+            string picName = parts[7];
+
+            Question questionas = new Question(themeName, question, opt1, opt2, opt3, opt4, correct, picName);
+            questionList.Add(questionas);
+        }
+        return questionList;
     }
 }
