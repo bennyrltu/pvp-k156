@@ -12,9 +12,9 @@ public class SubmitUsername : MonoBehaviour
     public GameObject current;
     public GameObject next;
 
-    public void clickSaveButton()
+    public void ClickSaveButton()
     {
-        //string resultsFilePath = "Assets/Data/results.csv";
+
         string resultsFilePath = Application.streamingAssetsPath + "/results.csv";
         if (TextBox.text.Length == 0)
         {
@@ -27,12 +27,12 @@ public class SubmitUsername : MonoBehaviour
         
         Debug.Log("Your name is " + PlayerPrefs.GetString("username"));
         GetComponent<GameController>().WritePerson(resultsFilePath, PlayerPrefs.GetString("username"));
-        GetComponent<GameController>().setResults(correctString, timespan);
-        GetComponent<Leaderboard>().setAnswers();
-        switchPrefabs(current, next);
+        GetComponent<GameController>().SetResults(correctString, timespan);
+        GetComponent<Leaderboard>().SetResults();
+        SwitchPrefabs(current, next);
     }
 
-    public void switchPrefabs(GameObject current, GameObject next)
+    public void SwitchPrefabs(GameObject current, GameObject next)
     {
         current.SetActive(false);
         next.SetActive(true);

@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Question
 {
-    public string themeName;
-    public string question;
-    public string opt1;
-    public string opt2;
-    public string opt3;
-    public string opt4;
-    public string correctOpt;
-    public string picName;
+    public string themeName { get; set; }
+    public string question { get; set; }
+    public string opt1 { get; set; }
+    public string opt2 { get; set; }
+    public string opt3 { get; set; }
+    public string opt4 { get; set; }
+    public int correctOpt { get; set; }
+    public string picName { get; set; }
 
-    public Question(string t, string q, string o1, string o2, string o3, string o4, string c, string pic)
+    public Question(string t, string q, string o1, string o2, string o3, string o4, int c, string pic)
     {
         themeName = t;
         question = q;
@@ -60,7 +60,7 @@ public class Question
         return opt4;
     }
 
-    public string getCorrectOpt()
+    public int getCorrectOpt()
     {
         return correctOpt;
     }
@@ -68,10 +68,5 @@ public class Question
     public string getPicName()
     {
         return picName;
-    }
-
-    public int retIndex(int index)
-    {
-        return correctOpt[index];
     }
 }

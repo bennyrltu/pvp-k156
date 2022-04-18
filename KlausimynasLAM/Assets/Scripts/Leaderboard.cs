@@ -1,31 +1,29 @@
-using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Linq;
+using System.Text;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class Leaderboard : MonoBehaviour
 {
     public GameObject[] options;
 
-    //string resultsFilePath = "Assets/Data/results.csv";
     string resultsFilePath = Application.streamingAssetsPath + "/results.csv";
 
     void Start()
     {
-        setAnswers();
+        SetResults();
     }
 
-    public void setAnswers()
+    public void SetResults()
     {
-        List<Person> personList = readPersonData(resultsFilePath);
+        List<Person> personList = ReadPersonData(resultsFilePath);
 
         var peopleSorted = personList
                 .OrderByDescending(person => person.correcqs)
                 .ThenBy(person => person.time)
                 .ThenBy(person => person.name)
-                .Take(6)
                 .ToList();
 
         for (int i = 0; i < options.Length; i++)
@@ -36,7 +34,7 @@ public class Leaderboard : MonoBehaviour
         }
     }
 
-    public List<Person> readPersonData(string fileName)
+    public List<Person> ReadPersonData(string fileName)
     {
         List<Person> personList = new List<Person>();
         string[] lines = File.ReadAllLines(fileName, Encoding.BigEndianUnicode);

@@ -20,12 +20,12 @@ public class AnswerScript : MonoBehaviour
         if (isCorrect)
         {
             GetComponent<Image>().color = new Color32(92, 176, 95, 255);
-            gameController.correct();
+            gameController.Correct();
         }
         else
         {
             GetComponent<Image>().color = new Color32(241, 85, 85, 255);
-            gameController.wrong();
+            gameController.Wrong();
         }
     }
 }

@@ -8,7 +8,6 @@ public class Stopwatch : MonoBehaviour
     float seconds;
     float minutes;
 
-
     [SerializeField] Text StopWatchText;
     // Start is called before the first frame update
     void Start()
@@ -39,8 +38,5 @@ public class Stopwatch : MonoBehaviour
     {
         Debug.Log(StopWatchText.text);
     }
-    public void ResetTime()
-    {
-        timer = 0.0f;
-    }
+
 }
