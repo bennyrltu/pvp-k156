@@ -45,12 +45,21 @@ public class GameController : MonoBehaviour
     public GameObject usernamePrefab;
     Texture2D myTexture;
     public GameObject rawImage;
-
     void Start()
     {
         questionList = ReadQuestionData(dataFilePath);
         SetQuizName();
-        SetQuestionData();   
+        SetQuestionData();
+        GetComponent<Stopwatch>().enabled = false;
+    }
+
+     void Update()
+    { 
+        if(quizPrefab.activeSelf)
+        {
+            GetComponent<Stopwatch>().enabled = true;
+            enabled = false;
+        }
     }
 
     void SetQuizName()

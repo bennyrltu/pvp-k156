@@ -26,11 +26,14 @@ public class Leaderboard : MonoBehaviour
                 .ThenBy(person => person.name)
                 .ToList();
 
-        for (int i = 0; i < options.Length; i++)
+        for (int i = 0; i < peopleSorted.Count; i++)
         {
-            options[i].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[i].getName();
-            options[i].transform.GetChild(2).GetComponent<Text>().text = peopleSorted[i].getCorrectAndAll();
-            options[i].transform.GetChild(4).GetComponent<Text>().text = peopleSorted[i].getTime();
+            if (i != 6)
+            {
+                options[i].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[i].getName();
+                options[i].transform.GetChild(2).GetComponent<Text>().text = peopleSorted[i].getCorrectAndAll();
+                options[i].transform.GetChild(4).GetComponent<Text>().text = peopleSorted[i].getTime();
+            }
         }
     }
 
