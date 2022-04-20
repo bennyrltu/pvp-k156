@@ -587,4 +587,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/B/Desktop/dylan/KlausimynasLAM.exe
+  playerPath: C:/Users/B/Desktop/test/KlausimynasLAM.exe

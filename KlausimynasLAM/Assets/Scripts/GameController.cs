@@ -144,7 +144,7 @@ public class GameController : MonoBehaviour
         correctAnswers++;
         GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
         UnclickableButtons();
-        StartCoroutine(wait());
+        StartCoroutine(Wait());
     }
 
     public void Wrong()
@@ -152,10 +152,10 @@ public class GameController : MonoBehaviour
         Debug.Log("Wrong Answer");
         GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
         UnclickableButtons();
-        StartCoroutine(wait());
+        StartCoroutine(Wait());
     }
 
-    IEnumerator wait()
+    IEnumerator Wait()
     {
         GetComponent<Stopwatch>().enabled = false;
         yield return new WaitForSeconds(2);
