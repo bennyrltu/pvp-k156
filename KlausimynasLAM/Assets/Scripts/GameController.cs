@@ -92,6 +92,7 @@ public class GameController : MonoBehaviour
 
             if (questionList[currentQuestion].getPicName().Length != 0)
             {
+                questionText.transform.position = new Vector2(960, 525);
                 string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].getPicName();
                 rawImage.SetActive(true);
                 Debug.Log(filename);
