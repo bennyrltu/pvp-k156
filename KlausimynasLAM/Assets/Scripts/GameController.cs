@@ -43,8 +43,10 @@ public class GameController : MonoBehaviour
 
     public GameObject quizPrefab;
     public GameObject usernamePrefab;
-    Texture2D myTexture;
+    Texture2D tex;
     public GameObject rawImage;
+    public GameObject enlargedImagePanel;
+
     void Start()
     {
         questionList = ReadQuestionData(dataFilePath);
@@ -97,9 +99,9 @@ public class GameController : MonoBehaviour
                 rawImage.SetActive(true);
                 Debug.Log(filename);
                 var rawData = File.ReadAllBytes(filename);
-                Texture2D tex = new Texture2D(0, 0);
+                tex = new Texture2D(0, 0);
                 tex.LoadImage(rawData);
-               rawImage.GetComponent<RawImage>().texture = tex;
+                rawImage.GetComponent<RawImage>().texture = tex;
             }
 
             SetAnswers();
@@ -211,5 +213,17 @@ public class GameController : MonoBehaviour
             questionList.Add(newQuestion);
         }
         return questionList;
+    }
+    public void enlargeImage()
+    {
+        GetComponent<Stopwatch>().enabled = false;
+        enlargedImagePanel.SetActive(true);
+        enlargedImagePanel.transform.GetChild(0).GetComponent<RawImage>().texture = tex;
+    }
+
+    public void minimizeImage()
+    {
+        enlargedImagePanel.SetActive(false);
+        GetComponent<Stopwatch>().enabled = true;
     }
 }
