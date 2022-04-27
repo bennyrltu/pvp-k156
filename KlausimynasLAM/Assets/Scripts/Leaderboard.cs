@@ -26,6 +26,8 @@ public class Leaderboard : MonoBehaviour
                 .ThenBy(person => person.name)
                 .ToList();
 
+        int index = peopleSorted.FindIndex(a => a.name.Equals(PlayerPrefs.GetString("username")));
+
         for (int i = 0; i < peopleSorted.Count; i++)
         {
             if (i < options.Length)
@@ -33,6 +35,13 @@ public class Leaderboard : MonoBehaviour
                 options[i].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[i].getName();
                 options[i].transform.GetChild(2).GetComponent<Text>().text = peopleSorted[i].getCorrectAndAll();
                 options[i].transform.GetChild(4).GetComponent<Text>().text = peopleSorted[i].getTime();
+            }
+            if (peopleSorted[i].getName() == PlayerPrefs.GetString("username") && index > 5)
+            {
+                options[options.Length - 1].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[i].getName();
+                options[options.Length - 1].transform.GetChild(2).GetComponent<Text>().text = peopleSorted[i].getCorrectAndAll();
+                options[options.Length - 1].transform.GetChild(4).GetComponent<Text>().text = peopleSorted[i].getTime();
+                options[options.Length - 1].transform.GetChild(0).GetComponent<Text>().text = index.ToString();
             }
         }
     }
