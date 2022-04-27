@@ -28,7 +28,7 @@ public class Leaderboard : MonoBehaviour
 
         for (int i = 0; i < peopleSorted.Count; i++)
         {
-            if (i != 6)
+            if (i < options.Length)
             {
                 options[i].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[i].getName();
                 options[i].transform.GetChild(2).GetComponent<Text>().text = peopleSorted[i].getCorrectAndAll();
