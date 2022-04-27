@@ -151,7 +151,7 @@ public class GameController : MonoBehaviour
         correctAnswers++;
         GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
         UnclickableButtons();
-        BonusTextPanel.SetActive(true);
+        //BonusTextPanel.SetActive(true);
         BonusPanelText.text = questionList[currentQuestion].getCorrectAnwserBonus();
         Debug.Log(questionList.Count.ToString());
         StartCoroutine(Wait());
@@ -162,7 +162,7 @@ public class GameController : MonoBehaviour
         Debug.Log("Wrong Answer");
         GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
         UnclickableButtons();
-        BonusTextPanel.SetActive(true);
+        //BonusTextPanel.SetActive(true);
         BonusPanelText.text = questionList[currentQuestion].getWrongAnwerBonus();
         Debug.Log(questionList.Count.ToString());
         StartCoroutine(Wait());
@@ -172,6 +172,9 @@ public class GameController : MonoBehaviour
     {
         GetComponent<Stopwatch>().enabled = false;
         yield return new WaitForSeconds(2);
+        BonusTextPanel.SetActive(true);
+        yield return new WaitUntil(() => BonusTextPanel.activeSelf == false);
+        yield return new WaitForSeconds(1);
         questionList = questionList.Where(x => x.themeName != questionList[currentQuestion].getThemeName()).ToList();
         SetQuestionData();
     }
@@ -238,5 +241,10 @@ public class GameController : MonoBehaviour
     {
         enlargedImagePanel.SetActive(false);
         GetComponent<Stopwatch>().enabled = true;
+    }
+
+    public void shutInformationPanel()
+    {
+        BonusTextPanel.SetActive(false);
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1576,6 +1576,38 @@ PrefabInstance:
     - target: {fileID: 2893194042344493107, guid: e10b2db21b15aeb45b0b2e55b4d33a5f, type: 3}
       propertyPath: m_LocalPosition.z
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222688852563939074, guid: e10b2db21b15aeb45b0b2e55b4d33a5f, type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222688852563939074, guid: e10b2db21b15aeb45b0b2e55b4d33a5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222688852563939074, guid: e10b2db21b15aeb45b0b2e55b4d33a5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222688852563939074, guid: e10b2db21b15aeb45b0b2e55b4d33a5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 132418813}
+    - target: {fileID: 3222688852563939074, guid: e10b2db21b15aeb45b0b2e55b4d33a5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222688852563939074, guid: e10b2db21b15aeb45b0b2e55b4d33a5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: shutInformationPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222688852563939074, guid: e10b2db21b15aeb45b0b2e55b4d33a5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222688852563939074, guid: e10b2db21b15aeb45b0b2e55b4d33a5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3351988694479618751, guid: e10b2db21b15aeb45b0b2e55b4d33a5f, type: 3}
       propertyPath: m_IsActive
