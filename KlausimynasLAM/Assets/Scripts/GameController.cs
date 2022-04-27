@@ -47,6 +47,10 @@ public class GameController : MonoBehaviour
     public GameObject rawImage;
     public GameObject enlargedImagePanel;
 
+    public GameObject BonusTextPanel;
+    public Text BonusPanelText;
+
+    int what;
     void Start()
     {
         questionList = ReadQuestionData(dataFilePath);
@@ -82,6 +86,7 @@ public class GameController : MonoBehaviour
     void SetQuestionData()
     {
         GetComponent<Stopwatch>().enabled = true;
+        BonusTextPanel.SetActive(false);
         rawImage.SetActive(false);
         currentQuestion = Random.Range(0, questionList.Count);
 
@@ -104,8 +109,7 @@ public class GameController : MonoBehaviour
                 rawImage.GetComponent<RawImage>().texture = tex;
             }
 
-            SetAnswers();
-            questionList = questionList.Where(x => x.themeName != questionList[currentQuestion].getThemeName()).ToList();
+            SetAnswers();          
             questionIndex++;
         }
         else
@@ -147,6 +151,9 @@ public class GameController : MonoBehaviour
         correctAnswers++;
         GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
         UnclickableButtons();
+        BonusTextPanel.SetActive(true);
+        BonusPanelText.text = questionList[currentQuestion].getCorrectAnwserBonus();
+        Debug.Log(questionList.Count.ToString());
         StartCoroutine(Wait());
     }
 
@@ -155,6 +162,9 @@ public class GameController : MonoBehaviour
         Debug.Log("Wrong Answer");
         GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
         UnclickableButtons();
+        BonusTextPanel.SetActive(true);
+        BonusPanelText.text = questionList[currentQuestion].getWrongAnwerBonus();
+        Debug.Log(questionList.Count.ToString());
         StartCoroutine(Wait());
     }
 
@@ -162,6 +172,7 @@ public class GameController : MonoBehaviour
     {
         GetComponent<Stopwatch>().enabled = false;
         yield return new WaitForSeconds(2);
+        questionList = questionList.Where(x => x.themeName != questionList[currentQuestion].getThemeName()).ToList();
         SetQuestionData();
     }
 
@@ -207,9 +218,11 @@ public class GameController : MonoBehaviour
             string opt3 = parts[4];
             string opt4 = parts[5];
             int correctOpt = int.Parse(parts[6]);
-            string picName = parts[7];
+            string correctBonus = parts[7];
+            string wrongBonus = parts[8];
+            string picName = parts[9];
 
-            Question newQuestion = new Question(themeName, questionText, opt1, opt2, opt3, opt4, correctOpt, picName);
+            Question newQuestion = new Question(themeName, questionText, opt1, opt2, opt3, opt4, correctOpt, correctBonus, wrongBonus, picName);
             questionList.Add(newQuestion);
         }
         return questionList;
