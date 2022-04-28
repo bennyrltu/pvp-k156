@@ -242,9 +242,4 @@ public class GameController : MonoBehaviour
         enlargedImagePanel.SetActive(false);
         GetComponent<Stopwatch>().enabled = true;
     }
-
-    public void shutInformationPanel()
-    {
-        BonusTextPanel.SetActive(false);
-    }
 }
