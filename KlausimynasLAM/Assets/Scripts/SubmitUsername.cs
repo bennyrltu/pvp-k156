@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,9 +15,12 @@ public class SubmitUsername : MonoBehaviour
     {
 
         string resultsFilePath = Application.streamingAssetsPath + "/results.csv";
+
+        var now = DateTime.Now;
+        string date = now.ToString("yy/MM/dd/H/m/s");
         if (TextBox.text.Length == 0)
         {
-            PlayerPrefs.SetString("username", "Anonimas");
+            PlayerPrefs.SetString("username", "Anonimas"+date);
         }
         else
         {

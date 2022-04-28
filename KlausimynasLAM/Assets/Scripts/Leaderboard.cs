@@ -32,16 +32,32 @@ public class Leaderboard : MonoBehaviour
         {
             if (i < options.Length)
             {
-                options[i].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[i].getName();
-                options[i].transform.GetChild(2).GetComponent<Text>().text = peopleSorted[i].getCorrectAndAll();
-                options[i].transform.GetChild(4).GetComponent<Text>().text = peopleSorted[i].getTime();
-            }
-            if (peopleSorted[i].getName() == PlayerPrefs.GetString("username") && index > 5)
-            {
-                options[options.Length - 1].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[i].getName();
-                options[options.Length - 1].transform.GetChild(2).GetComponent<Text>().text = peopleSorted[i].getCorrectAndAll();
-                options[options.Length - 1].transform.GetChild(4).GetComponent<Text>().text = peopleSorted[i].getTime();
-                options[options.Length - 1].transform.GetChild(0).GetComponent<Text>().text = "#" + index.ToString();
+                if (peopleSorted[i].getName().Contains("Anonimas"))
+                {
+                    options[i].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[i].getName().Substring(0, 8);
+                    options[i].transform.GetChild(2).GetComponent<Text>().text = peopleSorted[i].getCorrectAndAll();
+                    options[i].transform.GetChild(4).GetComponent<Text>().text = peopleSorted[i].getTime();
+                }
+                else
+                {
+                    options[i].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[i].getName();
+                    options[i].transform.GetChild(2).GetComponent<Text>().text = peopleSorted[i].getCorrectAndAll();
+                    options[i].transform.GetChild(4).GetComponent<Text>().text = peopleSorted[i].getTime();
+                }
+                if (index > 5)
+                {
+                    if (peopleSorted[index].getName().Contains("Anonimas"))
+                    {
+                        options[options.Length - 1].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[index].getName().Substring(0, 8);
+                    }
+                    else
+                    {
+                        options[options.Length - 1].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[index].getName();
+                    }
+                    options[options.Length - 1].transform.GetChild(2).GetComponent<Text>().text = peopleSorted[index].getCorrectAndAll();
+                    options[options.Length - 1].transform.GetChild(4).GetComponent<Text>().text = peopleSorted[index].getTime();
+                    options[options.Length - 1].transform.GetChild(0).GetComponent<Text>().text = "#" + index.ToString();
+                }
             }
         }
     }
