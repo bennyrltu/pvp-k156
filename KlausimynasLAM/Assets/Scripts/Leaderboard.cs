@@ -41,7 +41,7 @@ public class Leaderboard : MonoBehaviour
                 options[options.Length - 1].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[i].getName();
                 options[options.Length - 1].transform.GetChild(2).GetComponent<Text>().text = peopleSorted[i].getCorrectAndAll();
                 options[options.Length - 1].transform.GetChild(4).GetComponent<Text>().text = peopleSorted[i].getTime();
-                options[options.Length - 1].transform.GetChild(0).GetComponent<Text>().text = index.ToString();
+                options[options.Length - 1].transform.GetChild(0).GetComponent<Text>().text = "#" + index.ToString();
             }
         }
     }
