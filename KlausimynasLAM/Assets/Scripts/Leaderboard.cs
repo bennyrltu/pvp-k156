@@ -44,6 +44,10 @@ public class Leaderboard : MonoBehaviour
                     options[i].transform.GetChild(2).GetComponent<Text>().text = peopleSorted[i].getCorrectAndAll();
                     options[i].transform.GetChild(4).GetComponent<Text>().text = peopleSorted[i].getTime();
                 }
+                if (peopleSorted[i].getName() == PlayerPrefs.GetString("username"))
+                {
+                    options[i].GetComponent<Image>().color = new Color32(0, 250, 0, 150);
+                }
                 if (index > 5)
                 {
                     if (peopleSorted[index].getName().Contains("Anonimas"))
@@ -57,9 +61,11 @@ public class Leaderboard : MonoBehaviour
                     options[options.Length - 1].transform.GetChild(2).GetComponent<Text>().text = peopleSorted[index].getCorrectAndAll();
                     options[options.Length - 1].transform.GetChild(4).GetComponent<Text>().text = peopleSorted[index].getTime();
                     options[options.Length - 1].transform.GetChild(0).GetComponent<Text>().text = "#" + index.ToString();
+                    options[options.Length - 1].GetComponent<Image>().color = new Color32(0, 250, 0, 150);
                 }
             }
         }
+        PlayerPrefs.DeleteAll();
     }
 
     public List<Person> ReadPersonData(string fileName)
