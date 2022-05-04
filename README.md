@@ -1,4 +1,4 @@
-## EDUKACINĖ PROGRAMĖLĖ-ŽAIDIMAS „AVIACIJOS ISTORIJA“
+## ŽINYNAS-KLAUSIMYNAS LIETUVOS AVIACIJOS MUZIEJUI
 PVP modulio projekto repozitorija. (komanda nr. 156)
 
 ## Idėjos aprašymas
