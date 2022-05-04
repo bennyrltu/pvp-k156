@@ -2,10 +2,9 @@
 PVP modulio projekto repozitorija. (komanda nr. 156)
 
 ## Idėjos aprašymas
-Mūsų komandos kuriamas skaitmeninis sprendimas – edukacinė mobilioji programėlė - klausimynas
-skirtas Lietuvos aviacijos muziejaus lankytojams. Naudotojas programėlėje gali pasirinkti skenuoti
-eksponatus ir taip gauti išsamesnę informaciją apie juos arba atsakinėti klausimyną, kuriame būtų
-galima atsakinėti į klausimus susijusius su muziejaus eksponatais arba jo istorija.
+Mūsų komandos kuriamas skaitmeninis sprendimas – žinynas-klausimynas
+skirtas Lietuvos aviacijos muziejaus lankytojams. Naudotojas programėlėje gali spręsti klausimyną ir
+gauti papildomos informacijos apie sprendžiamus klausimus.
 
 ## Tikslas
 Sukurti interaktyvią mobiliąją programėlę, kuri skatintų žmones lankyti muziejų ir taip juos įtraukti į
