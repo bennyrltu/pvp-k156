@@ -8,22 +8,23 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    /* klausimynø duomenø failas */
-    string dataFilePath = Application.streamingAssetsPath + "/data.csv";
+    /* klausimyno duomenu failas */
+    //string dataFilePath = Application.streamingAssetsPath + "/data.csv";
+    static readonly string dataFilePath = Application.streamingAssetsPath + "/data.csv";
 
-    // klausimų sąrašas
+    /* klausimu sarasas */
     List<Question> questionList = new List<Question>();
 
     /* klausimynu temu pavadinimu uzpildymui */
     public GameObject[] themes;
 
-    /* atsakymø variantø uþpildymui */
+    /* atsakymu variantu uzpildymui */
     public GameObject[] options;
 
     /* dabartinio klausimo indeksas */
     int currentQuestion;
 
-    /* klausimo, klausimo numerio ir klausimø kiekio uþpildymui */
+    /* klausimo, klausimo numerio ir klausimu kiekio uzpildymui */
     public Text questionText;
     public Text questionNumber;
     public Text questionCount;
@@ -31,14 +32,14 @@ public class GameController : MonoBehaviour
     /* klausimo numerio indeksas atvaizdavimui */
     int questionIndex = 1;
 
-    /* teisingø atsakymø kiekis */
+    /* teisingu atsakymu kiekis */
     int correctAnswers = 0;
 
-    /* kiek ið viso klausimø yra atrinkta á klausimynà */
+    /* kiek is viso klausimu yra atrinkta i klausimyna */
     int numberOfQuestions = 0;
 
-    /* sugaiðtas laikas sprendþiant klausimynà */
-    // reikës keist, pataisius Stopwatch.cs, nes saugosim tai kaip int, sekundëmis
+    /* sugaistas laikas sprendziant klausimyna */
+    // reikes keist, pataisius Stopwatch.cs, nes saugosim tai kaip int, sekundemis
     string timespan;
 
     public GameObject quizPrefab;
@@ -50,7 +51,6 @@ public class GameController : MonoBehaviour
     public GameObject BonusTextPanel;
     public Text BonusPanelText;
 
-    int what;
     void Start()
     {
         questionList = ReadQuestionData(dataFilePath);
@@ -134,13 +134,10 @@ public class GameController : MonoBehaviour
             options[i].GetComponent<AnswerScript>().isCorrect = false;
             options[i].GetComponent<Button>().interactable = true;
             options[i].GetComponent<Image>().color = options[i].GetComponent<AnswerScript>().startColor;
-            //options[i].transform.GetChild(0).GetComponent<Text>().color = options[i].GetComponent<AnswerScript>().startTextColor;
-            //options[i].GetComponent<Image>().color = new Color32(92, 176, 95, 255);
 
             if (questionList[currentQuestion].getCorrectOpt() == i + 1)
             {
                 options[i].GetComponent<AnswerScript>().isCorrect = true;
-                //options[i].GetComponent<Image>().color = new Color32(92, 176, 95, 255);
             }
         }
     }
@@ -151,7 +148,6 @@ public class GameController : MonoBehaviour
         correctAnswers++;
         GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
         UnclickableButtons();
-        //BonusTextPanel.SetActive(true);
         BonusPanelText.text = questionList[currentQuestion].getCorrectAnwserBonus();
         Debug.Log(questionList.Count.ToString());
         StartCoroutine(Wait());
@@ -162,7 +158,6 @@ public class GameController : MonoBehaviour
         Debug.Log("Wrong Answer");
         GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
         UnclickableButtons();
-        //BonusTextPanel.SetActive(true);
         BonusPanelText.text = questionList[currentQuestion].getWrongAnwerBonus();
         Debug.Log(questionList.Count.ToString());
         StartCoroutine(Wait());

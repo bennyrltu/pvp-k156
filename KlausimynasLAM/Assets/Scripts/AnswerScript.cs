@@ -4,27 +4,36 @@ using UnityEngine.UI;
 public class AnswerScript : MonoBehaviour
 {
     public bool isCorrect = false;
-    public GameController gameController;
+
+    [SerializeField]
+    private GameController gameController;
+
+    [SerializeField]
+    private Image buttonImage;
 
     public Color startColor;
-    public Color startTextColor;
+
+    [SerializeField]
+    private Color correctColor;
+
+    [SerializeField]
+    private Color wrongColor;
 
     private void Start()
     {
-        startColor = GetComponent<Image>().color;
-        startTextColor = transform.GetChild(0).GetComponent<Text>().color;
+        startColor = buttonImage.color;
     }
 
-    public void checkAnswer()
+    public void CheckAnswer()
     {
         if (isCorrect)
         {
-            GetComponent<Image>().color = new Color32(92, 176, 95, 255);
+            buttonImage.color = correctColor;
             gameController.Correct();
         }
         else
         {
-            GetComponent<Image>().color = new Color32(241, 85, 85, 255);
+            buttonImage.color = wrongColor;
             gameController.Wrong();
         }
     }
