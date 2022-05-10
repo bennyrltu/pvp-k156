@@ -32,34 +32,34 @@ public class Leaderboard : MonoBehaviour
         {
             if (i < options.Length)
             {
-                if (peopleSorted[i].getName().Contains("Anonimas"))
+                if (peopleSorted[i].name.Contains("Anonimas"))
                 {
-                    options[i].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[i].getName().Substring(0, 8);
-                    options[i].transform.GetChild(2).GetComponent<Text>().text = peopleSorted[i].getCorrectAndAll();
-                    options[i].transform.GetChild(4).GetComponent<Text>().text = peopleSorted[i].getTime();
+                    options[i].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[i].name.Substring(0, 8);
+                    options[i].transform.GetChild(2).GetComponent<Text>().text = peopleSorted[i].GetCorrectAndAll();
+                    options[i].transform.GetChild(4).GetComponent<Text>().text = peopleSorted[i].time;
                 }
                 else
                 {
-                    options[i].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[i].getName();
-                    options[i].transform.GetChild(2).GetComponent<Text>().text = peopleSorted[i].getCorrectAndAll();
-                    options[i].transform.GetChild(4).GetComponent<Text>().text = peopleSorted[i].getTime();
+                    options[i].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[i].name;
+                    options[i].transform.GetChild(2).GetComponent<Text>().text = peopleSorted[i].GetCorrectAndAll();
+                    options[i].transform.GetChild(4).GetComponent<Text>().text = peopleSorted[i].time;
                 }
-                if (peopleSorted[i].getName() == PlayerPrefs.GetString("username"))
+                if (peopleSorted[i].name == PlayerPrefs.GetString("username"))
                 {
                     options[i].GetComponent<Image>().color = new Color32(0, 250, 0, 150);
                 }
                 if (index > 5)
                 {
-                    if (peopleSorted[index].getName().Contains("Anonimas"))
+                    if (peopleSorted[index].name.Contains("Anonimas"))
                     {
-                        options[options.Length - 1].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[index].getName().Substring(0, 8);
+                        options[options.Length - 1].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[index].name.Substring(0, 8);
                     }
                     else
                     {
-                        options[options.Length - 1].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[index].getName();
+                        options[options.Length - 1].transform.GetChild(1).GetComponent<Text>().text = peopleSorted[index].name;
                     }
-                    options[options.Length - 1].transform.GetChild(2).GetComponent<Text>().text = peopleSorted[index].getCorrectAndAll();
-                    options[options.Length - 1].transform.GetChild(4).GetComponent<Text>().text = peopleSorted[index].getTime();
+                    options[options.Length - 1].transform.GetChild(2).GetComponent<Text>().text = peopleSorted[index].GetCorrectAndAll();
+                    options[options.Length - 1].transform.GetChild(4).GetComponent<Text>().text = peopleSorted[index].time;
                     options[options.Length - 1].transform.GetChild(0).GetComponent<Text>().text = "#" + index.ToString();
                     options[options.Length - 1].GetComponent<Image>().color = new Color32(0, 250, 0, 150);
                 }

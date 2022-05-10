@@ -14,10 +14,10 @@ public class Popup : MonoBehaviour
 
     public void CloseDialog()
     {
-        popup.LeanMoveLocalY(-Screen.height, 0.5f).setEaseInExpo().setOnComplete(onComplete);
+        popup.LeanMoveLocalY(-Screen.height, 0.5f).setEaseInExpo().setOnComplete(OnComplete);
     }
 
-    void onComplete()
+    void OnComplete()
     {
         gameObject.SetActive(false);
     }

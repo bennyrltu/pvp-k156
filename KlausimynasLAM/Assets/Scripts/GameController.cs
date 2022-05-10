@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         questionList = ReadQuestionData(dataFilePath);
-        SetQuizName();
+        GetTotakQuestionsNumber();
         SetQuestionData();
         GetComponent<Stopwatch>().enabled = false;
     }
@@ -68,19 +68,12 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void SetQuizName()
+    void GetTotakQuestionsNumber()
     {
-        List<Question> distinctPeople = questionList
+        numberOfQuestions = questionList
             .GroupBy(p => p.themeName)
             .Select(g => g.First())
-            .ToList();
-
-        numberOfQuestions = distinctPeople.Count;
-
-        for (int i = 0; i < distinctPeople.Count; i++)
-        {
-            themes[i].transform.GetChild(0).GetComponent<Text>().text = distinctPeople[i].getThemeName();
-        }
+            .Count();
     }
 
     void SetQuestionData()
@@ -93,14 +86,14 @@ public class GameController : MonoBehaviour
         if (questionList.Count > 0)
         {
 
-            questionText.text = questionList[currentQuestion].getQuestion();
+            questionText.text = questionList[currentQuestion].question;
             questionNumber.text = "Klausimas " + questionIndex;
             questionCount.text = "/" + numberOfQuestions;
 
-            if (questionList[currentQuestion].getPicName().Length != 0)
+            if (questionList[currentQuestion].picName.Length != 0)
             {
                 questionText.transform.position = new Vector2(960, 525);
-                string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].getPicName();
+                string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].picName;
                 rawImage.SetActive(true);
                 Debug.Log(filename);
                 var rawData = File.ReadAllBytes(filename);
@@ -124,10 +117,10 @@ public class GameController : MonoBehaviour
 
     void SetAnswers()
     {
-        options[0].transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].getOpt1();
-        options[1].transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].getOpt2();
-        options[2].transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].getOpt3();
-        options[3].transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].getOpt4();
+        options[0].transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].opt1;
+        options[1].transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].opt2;
+        options[2].transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].opt3;
+        options[3].transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].opt4;
 
         for (int i = 0; i < options.Length; i++)
         {
@@ -135,7 +128,7 @@ public class GameController : MonoBehaviour
             options[i].GetComponent<Button>().interactable = true;
             options[i].GetComponent<Image>().color = options[i].GetComponent<AnswerScript>().startColor;
 
-            if (questionList[currentQuestion].getCorrectOpt() == i + 1)
+            if (questionList[currentQuestion].correctOpt == i + 1)
             {
                 options[i].GetComponent<AnswerScript>().isCorrect = true;
             }
@@ -148,7 +141,7 @@ public class GameController : MonoBehaviour
         correctAnswers++;
         GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
         UnclickableButtons();
-        BonusPanelText.text = questionList[currentQuestion].getCorrectAnwserBonus();
+        BonusPanelText.text = questionList[currentQuestion].correctAnwserBonus;
         Debug.Log(questionList.Count.ToString());
         StartCoroutine(Wait());
     }
@@ -158,7 +151,7 @@ public class GameController : MonoBehaviour
         Debug.Log("Wrong Answer");
         GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
         UnclickableButtons();
-        BonusPanelText.text = questionList[currentQuestion].getWrongAnwerBonus();
+        BonusPanelText.text = questionList[currentQuestion].wrongAnwserBonus;
         Debug.Log(questionList.Count.ToString());
         StartCoroutine(Wait());
     }
@@ -170,7 +163,7 @@ public class GameController : MonoBehaviour
         BonusTextPanel.SetActive(true);
         yield return new WaitUntil(() => BonusTextPanel.activeSelf == false);
         yield return new WaitForSeconds(1);
-        questionList = questionList.Where(x => x.themeName != questionList[currentQuestion].getThemeName()).ToList();
+        questionList = questionList.Where(x => x.themeName != questionList[currentQuestion].themeName).ToList();
         SetQuestionData();
     }
 
@@ -225,14 +218,14 @@ public class GameController : MonoBehaviour
         }
         return questionList;
     }
-    public void enlargeImage()
+    public void EnlargeImage()
     {
         GetComponent<Stopwatch>().enabled = false;
         enlargedImagePanel.SetActive(true);
         enlargedImagePanel.transform.GetChild(0).GetComponent<RawImage>().texture = tex;
     }
 
-    public void minimizeImage()
+    public void MinimizeImage()
     {
         enlargedImagePanel.SetActive(false);
         GetComponent<Stopwatch>().enabled = true;

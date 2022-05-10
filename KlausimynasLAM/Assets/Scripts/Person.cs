@@ -17,23 +17,8 @@ public class Person
         time = t;
     }
 
-    public override string ToString()
-    {
-        return string.Format($"{name},{correcqs},{allqs},{time}");
-    }
-
-    public string getName()
-    {
-        return name;
-    }
-
-    public string getCorrectAndAll()
+    public string GetCorrectAndAll()
     {
         return correcqs+"/"+allqs;
-    }
-
-    public string getTime()
-    {
-        return time;
     }
 }
