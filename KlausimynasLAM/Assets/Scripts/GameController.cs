@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         questionList = ReadQuestionData(dataFilePath);
-        GetTotakQuestionsNumber();
+        GetTotalQuestionsNumber();
         SetQuestionData();
         GetComponent<Stopwatch>().enabled = false;
     }
@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void GetTotakQuestionsNumber()
+    void GetTotalQuestionsNumber()
     {
         numberOfQuestions = questionList
             .GroupBy(p => p.themeName)
@@ -179,6 +179,7 @@ public class GameController : MonoBehaviour
     {
         Person personToAdd = new Person(enteredName, correctAnswers, numberOfQuestions, timespan);
         StreamWriter writer = new StreamWriter(resultsPath, true, Encoding.BigEndianUnicode);
+        Debug.Log(personToAdd);
         writer.WriteLine(personToAdd.ToString());
         writer.Close();
     }

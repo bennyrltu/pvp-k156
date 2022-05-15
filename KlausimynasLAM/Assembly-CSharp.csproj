@@ -62,6 +62,7 @@
     <Compile Include="Assets\LeanTween\Framework\LTSeq.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
     <Compile Include="Assets\Scripts\Popup.cs" />
+    <Compile Include="Assets\Scripts\Inactivity.cs" />
     <Compile Include="Assets\Scripts\AnswerScript.cs" />
     <Compile Include="Assets\Scripts\SubmitUsername.cs" />
     <Compile Include="Assets\Scripts\Reset.cs" />
@@ -75,7 +76,6 @@
     <Compile Include="Assets\Scripts\Person.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTDescrOptional.cs" />
     <Compile Include="Assets\Scripts\Question.cs" />
-    <Compile Include="Assets\Scripts\Inactivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LeanTween\ReadMe.txt" />

@@ -21,4 +21,8 @@ public class Person
     {
         return correcqs+"/"+allqs;
     }
+    public override string ToString()
+    {
+        return string.Format($"{name},{correcqs},{allqs},{time}");
+    }
 }

@@ -25,9 +25,7 @@ public class SubmitUsername : MonoBehaviour
         else
         {
             PlayerPrefs.SetString("username", TextBox.text);
-        }
-        
-        Debug.Log("Your name is " + PlayerPrefs.GetString("username"));
+        }      
         GetComponent<GameController>().WritePerson(resultsFilePath, PlayerPrefs.GetString("username"));
         GetComponent<GameController>().SetResults(correctString, timespan);
         GetComponent<Leaderboard>().SetResults();
