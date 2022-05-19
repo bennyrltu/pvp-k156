@@ -11,6 +11,22 @@ public class SubmitUsername : MonoBehaviour
     public GameObject current;
     public GameObject next;
 
+    public Person Person
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
+    public Leaderboard Leaderboard
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
     public void ClickSaveButton()
     {
 

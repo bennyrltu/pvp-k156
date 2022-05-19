@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SubmitUsername">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAIAAAAAAAAAAASBgAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Assets\Scripts\SubmitUsername.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SwitchPrefab">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAACAAAAAAAQ=</HashCode>
+      <FileName>Assets\Scripts\SwitchPrefab.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Stopwatch">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUEAgAAACBAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAQA=</HashCode>
+      <FileName>Assets\Scripts\Stopwatch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Reset">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Reset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Question">
+    <Position X="5.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACWAEAAAEAAAAAQAAQAAACAAAAAAAgAAAA=</HashCode>
+      <FileName>Assets\Scripts\Question.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProgressBar">
+    <Position X="7" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAEAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ProgressBar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Popup">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACQAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\Popup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Person">
+    <Position X="7.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIBAAIAAAAAgAAEAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Leaderboard">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AMAAAAAAACAAAAACgIAAAAAAACAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Leaderboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Inactivity">
+    <Position X="3" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAQAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Assets\Scripts\Inactivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameController">
+    <Position X="0.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EMQAAAAEhDCGMEBAQJAgCIABAIQQAAAEDIgUAAQsAAA=</HashCode>
+      <FileName>Assets\Scripts\GameController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AnswerScript" />
+      <Property Name="ProgressBar" />
+      <Property Name="Question" />
+      <Property Name="Person" />
+      <Property Name="SubmitUsername" />
+      <Property Name="SwitchPrefab" />
+      <Property Name="Leaderboard" />
+      <Property Name="Stopwatch" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="AnswerScript">
+    <Position X="3.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAgQAAACAAAAAAAAAgAAAAABAEAAAAg=</HashCode>
+      <FileName>Assets\Scripts\AnswerScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
