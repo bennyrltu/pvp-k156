@@ -18,15 +18,6 @@ public class AnswerScript : MonoBehaviour
 
     [SerializeField]
     private Color wrongColor;
-
-    public Popup Popup
-    {
-        get => default;
-        set
-        {
-        }
-    }
-
     private void Start()
     {
         startColor = buttonImage.color;
