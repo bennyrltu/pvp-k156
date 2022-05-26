@@ -53,7 +53,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        questionList = ReadQuestionData(dataFilePath);
+        //questionList = ReadQuestionData(dataFilePath);
         GetTotalQuestionsNumber();
         SetQuestionData();
         GetComponent<Stopwatch>().enabled = false;
@@ -120,13 +120,13 @@ public class GameController : MonoBehaviour
         options[0].transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].opt1;
         options[1].transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].opt2;
         options[2].transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].opt3;
-        options[3].transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].opt4;
+        //options[3].transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].opt4;
 
         for (int i = 0; i < options.Length; i++)
         {
             options[i].GetComponent<AnswerScript>().isCorrect = false;
             options[i].GetComponent<Button>().interactable = true;
-            options[i].GetComponent<Image>().color = options[i].GetComponent<AnswerScript>().startColor;
+            //options[i].GetComponent<Image>().color = options[i].GetComponent<AnswerScript>().startColor;
 
             if (questionList[currentQuestion].correctOpt == i + 1)
             {
@@ -196,29 +196,29 @@ public class GameController : MonoBehaviour
         prefab2.SetActive(true);
     }
 
-    public List<Question> ReadQuestionData(string fileName)
-    {
-        List<Question> questionList = new List<Question>();
-        string[] lines = File.ReadAllLines(fileName, Encoding.BigEndianUnicode).Skip(1).ToArray();
-        foreach (var line in lines)
-        {
-            string[] parts = line.Trim().Split(';');
-            string themeName = parts[0];
-            string questionText = parts[1];
-            string opt1 = parts[2];
-            string opt2 = parts[3];
-            string opt3 = parts[4];
-            string opt4 = parts[5];
-            int correctOpt = int.Parse(parts[6]);
-            string correctBonus = parts[7];
-            string wrongBonus = parts[8];
-            string picName = parts[9];
+    //public List<Question> ReadQuestionData(string fileName)
+    //{
+    //    List<Question> questionList = new List<Question>();
+    //    string[] lines = File.ReadAllLines(fileName, Encoding.BigEndianUnicode).Skip(1).ToArray();
+    //    foreach (var line in lines)
+    //    {
+    //        string[] parts = line.Trim().Split(';');
+    //        string themeName = parts[0];
+    //        string questionText = parts[1];
+    //        string opt1 = parts[2];
+    //        string opt2 = parts[3];
+    //        string opt3 = parts[4];
+    //        string opt4 = parts[5];
+    //        int correctOpt = int.Parse(parts[6]);
+    //        string correctBonus = parts[7];
+    //        string wrongBonus = parts[8];
+    //        string picName = parts[9];
 
-            Question newQuestion = new Question(themeName, questionText, opt1, opt2, opt3, opt4, correctOpt, correctBonus, wrongBonus, picName);
-            questionList.Add(newQuestion);
-        }
-        return questionList;
-    }
+    //        Question newQuestion = new Question(themeName, questionText, opt1, opt2, opt3, opt4, correctOpt, correctBonus, wrongBonus, picName);
+    //        questionList.Add(newQuestion);
+    //    }
+    //    return questionList;
+    //}
     public void EnlargeImage()
     {
         GetComponent<Stopwatch>().enabled = false;

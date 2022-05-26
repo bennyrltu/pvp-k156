@@ -9,6 +9,9 @@ public class Stopwatch : MonoBehaviour
     float minutes;
 
     [SerializeField] Text StopWatchText;
+    [SerializeField]
+    GameObject quizPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +21,11 @@ public class Stopwatch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Calc();
+        if (quizPrefab.activeSelf)
+        {
+            Calc();
+        }
+        //Calc();
     }
 
     void Calc()
@@ -26,7 +33,7 @@ public class Stopwatch : MonoBehaviour
             timer += Time.deltaTime;
             seconds = (int)(timer % 60);
             minutes = (int)((timer / 60) % 60);
-            StopWatchText.text = minutes.ToString("00") + ": " + seconds.ToString("00");
+            StopWatchText.text = minutes.ToString("00") + ":" + seconds.ToString("00");
     }
 
     public string CurrentTime()

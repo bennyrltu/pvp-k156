@@ -4,15 +4,24 @@ ScriptsOnlyBuild:
     - AnswerScript
     - GameController
     - Leaderboard
+    - Popup
     - ProgressBar
+    - QuizController
     - Reset
     - Stopwatch
     - SubmitUsername
     - SwitchPrefab
     Unity.CollabProxy.Editor.dll:
     - Unity.Cloud.Collaborate.UserInterface.CollaborateWindow
+    - Unity.Cloud.Collaborate.UserInterface.WindowCache
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -47,58 +56,70 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
-    - Class: 114
-      Script: {instanceID: 1436}
     - Class: 114
       Script: {instanceID: 1438}
     - Class: 114
       Script: {instanceID: 1440}
     - Class: 114
-      Script: {instanceID: 1492}
+      Script: {instanceID: 1442}
     - Class: 114
-      Script: {instanceID: 1644}
+      Script: {instanceID: 1444}
     - Class: 114
-      Script: {instanceID: 2318}
+      Script: {instanceID: 1546}
     - Class: 114
-      Script: {instanceID: 2432}
+      Script: {instanceID: 1702}
     - Class: 114
-      Script: {instanceID: 2620}
+      Script: {instanceID: 2296}
     - Class: 114
-      Script: {instanceID: 2650}
+      Script: {instanceID: 2386}
     - Class: 114
-      Script: {instanceID: 2726}
+      Script: {instanceID: 2502}
+    - Class: 114
+      Script: {instanceID: 2690}
+    - Class: 114
+      Script: {instanceID: 2720}
     - Class: 114
       Script: {instanceID: 2796}
     - Class: 114
-      Script: {instanceID: 2806}
+      Script: {instanceID: 2866}
     - Class: 114
-      Script: {instanceID: 2846}
+      Script: {instanceID: 2876}
     - Class: 114
-      Script: {instanceID: 2886}
+      Script: {instanceID: 2916}
     - Class: 114
-      Script: {instanceID: 3034}
+      Script: {instanceID: 2956}
     - Class: 114
-      Script: {instanceID: 3044}
+      Script: {instanceID: 3106}
     - Class: 114
-      Script: {instanceID: 3150}
+      Script: {instanceID: 3116}
     - Class: 114
-      Script: {instanceID: 3184}
+      Script: {instanceID: 3222}
     - Class: 114
-      Script: {instanceID: 3610}
+      Script: {instanceID: 3256}
     - Class: 114
-      Script: {instanceID: 3742}
+      Script: {instanceID: 3684}
     - Class: 114
-      Script: {instanceID: 3862}
+      Script: {instanceID: 3934}
     - Class: 114
-      Script: {instanceID: 3896}
+      Script: {instanceID: 3968}
     - Class: 114
-      Script: {instanceID: 3908}
+      Script: {instanceID: 3980}
+    - Class: 114
+      Script: {instanceID: 208498}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -114,6 +135,10 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 328
+      Script: {instanceID: 0}
+    - Class: 329
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -136,6 +161,12 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
+      Hash: 040dd48e3a027d5424519a5fa2009df4
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: ScrollRect
+  - hash:
+      serializedVersion: 2
       Hash: 5ab533713adae59372fb3e10a585c186
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -152,6 +183,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_InputField
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LeanTween
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -220,6 +257,12 @@ ScriptsOnlyBuild:
     className: PlaymodeTestsController
   - hash:
       serializedVersion: 2
+      Hash: 95ec224267fd8ec8ff7e3aa2b94fe503
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Popup
+  - hash:
+      serializedVersion: 2
       Hash: a1aa98c78061c6f03a8c124cda576e67
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -230,6 +273,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: AspectRatioFitter
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Inactivity
   - hash:
       serializedVersion: 2
       Hash: cc4274b586df3c02688bac01b88bd16c
@@ -268,7 +317,7 @@ ScriptsOnlyBuild:
     className: TestRunCallbackListener
   - hash:
       serializedVersion: 2
-      Hash: 6e3f3f42980aaeb7b1274aa71dc38494
+      Hash: f07826a8c5dcf473d7e101cb68bd2da5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AnswerScript
@@ -358,7 +407,7 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: be07aac552ee2272e6f90e4cdc02a137
+      Hash: 274136e22aeaee62217e338b2dde90f6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Leaderboard
@@ -394,7 +443,7 @@ ScriptsOnlyBuild:
     className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
-      Hash: d68ae1da3bc2323fd8cf6b40a62d8954
+      Hash: fadf721948a765d1e4ca495dc135b8a1
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Stopwatch
@@ -496,12 +545,6 @@ ScriptsOnlyBuild:
     className: SignalReceiver
   - hash:
       serializedVersion: 2
-      Hash: 040dd48e3a027d5424519a5fa2009df4
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: ScrollRect
-  - hash:
-      serializedVersion: 2
       Hash: 18c222bef9ae745ce69ddde9b74337ca
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
@@ -584,7 +627,13 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: TouchInputModule
+  - hash:
+      serializedVersion: 2
+      Hash: c2ac46277edf34142e730c27f61e7b0f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: QuizController
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/B/Desktop/Hootenanny/KlausimynasLAM.exe
+  playerPath: C:/Users/Aorus/Desktop/buildas/KlausimynasLAM.exe
