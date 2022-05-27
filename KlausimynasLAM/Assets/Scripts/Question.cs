@@ -27,4 +27,23 @@ public class Question
         wrongAnwserBonus = wBonus;
         picName = pic;
     }
+
+    public string ReturnCorrectOptText()
+    {
+        if (correctOpt == 1)
+        {
+            return opt1.ToString();
+        }
+
+        if (correctOpt == 2)
+        {
+            return opt2.ToString();
+        }
+
+        if (correctOpt == 3)
+        {
+            return opt3.ToString();
+        }
+        return "";
+    }
 }

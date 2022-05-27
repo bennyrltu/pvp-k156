@@ -62,6 +62,39 @@ public class QuizController : MonoBehaviour
     [SerializeField]
     GameObject enlargedImagePanel;
 
+    [SerializeField]
+    public GameObject BonusTextPanel;
+
+    [SerializeField]
+    Text BonusPanelCorrectText;
+
+    [SerializeField]
+    public Text HideCorrectInfo1;
+
+    [SerializeField]
+    public Text HideCorrectInfo2;
+
+    [SerializeField]
+    public Text BonusInfoTime;
+
+    [SerializeField]
+    public Text BonusInfoCorrect;
+
+    [SerializeField]
+    Text BonusPanelWrongText;
+
+    [SerializeField]
+    Image Button;
+
+    [SerializeField]
+    Text ButtonText;
+
+    [SerializeField]
+    private Color correctColor;
+
+    [SerializeField]
+    private Color wrongColor;
+
     void Start()
     {
         questionList = ReadQuestionData(dataFilePath);
@@ -82,9 +115,18 @@ public class QuizController : MonoBehaviour
     {
         Debug.Log("Correct Answer");
         correctAnswers++;
+        answeredQuestionsOutOfText.text = "<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
         GetComponent<ProgressBar>().Increase(1f / numberOfQuestions);
         UnclickableButtons();
+        Button.color=correctColor;
+        ButtonText.text="PUIKIOS ŽINIOS!";
+        HideCorrectInfo1.text = "";
+        HideCorrectInfo2.text = "";
+        BonusPanelCorrectText.enabled = true;
+        BonusPanelWrongText.enabled = false;
+        BonusPanelCorrectText.text = questionList[currentQuestion].correctAnwserBonus;
         Debug.Log(questionList.Count.ToString());
+        BonusInfoTime.text=GetComponent<Stopwatch>().CurrentTime();
         StartCoroutine(Wait());
     }
 
@@ -93,14 +135,26 @@ public class QuizController : MonoBehaviour
         Debug.Log("Wrong Answer");
         GetComponent<ProgressBar>().Increase(1f / numberOfQuestions);
         UnclickableButtons();
+        Button.color=wrongColor;
+        ButtonText.text="DEJA...";
+        HideCorrectInfo1.text = "Teisingas atsakymas - ";
+        HideCorrectInfo2.text = questionList[currentQuestion].ReturnCorrectOptText();
+        BonusPanelWrongText.enabled = true;
+        BonusPanelCorrectText.enabled = false;
+        BonusPanelWrongText.text = questionList[currentQuestion].wrongAnwserBonus;
         Debug.Log(questionList.Count.ToString());
+        BonusInfoTime.text=GetComponent<Stopwatch>().CurrentTime();
         StartCoroutine(Wait());
     }
 
     IEnumerator Wait()
     {
         GetComponent<Stopwatch>().enabled = false;
+        BonusInfoCorrect.text="<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
         yield return new WaitForSeconds(2);
+        BonusTextPanel.SetActive(true);
+        yield return new WaitUntil(() => BonusTextPanel.activeSelf == false);
+        yield return new WaitForSeconds(1);
         questionList = questionList.Where(x => x.themeName != questionList[currentQuestion].themeName).ToList();
         SetQuestionData();
     }
