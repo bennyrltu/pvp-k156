@@ -6,26 +6,27 @@ public class Question
 {
     public string themeName { get; set; }
     public string question { get; set; }
+    public string highlitedText { get; set; }
     public string opt1 { get; set; }
     public string opt2 { get; set; }
     public string opt3 { get; set; }
     public int correctOpt { get; set; }
-
-    public string correctAnwserBonus { get; set; }
-    public string wrongAnwserBonus { get; set; }
+    public string bonusInfo { get; set; }
     public string picName { get; set; }
+    public string bonusPic { get; set; }
 
-    public Question(string t, string q, string o1, string o2, string o3, int c, string cBonus, string wBonus, string pic)
+    public Question(string t, string q, string qh, string o1, string o2, string o3, int c, string bonus, string pic, string bonuspic)
     {
         themeName = t;
         question = q;
+        highlitedText=qh;
         opt1 = o1;
         opt2 = o2;
         opt3 = o3;
         correctOpt = c;
-        correctAnwserBonus = cBonus;
-        wrongAnwserBonus = wBonus;
+        bonusInfo = bonus;
         picName = pic;
+        bonusPic = bonuspic;
     }
 
     public string ReturnCorrectOptText()

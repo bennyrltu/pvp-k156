@@ -90,6 +90,9 @@ public class QuizController : MonoBehaviour
     Text ButtonText;
 
     [SerializeField]
+    GameObject BonusImage;
+
+    [SerializeField]
     private Color correctColor;
 
     [SerializeField]
@@ -118,13 +121,24 @@ public class QuizController : MonoBehaviour
         answeredQuestionsOutOfText.text = "<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
         GetComponent<ProgressBar>().Increase(1f / numberOfQuestions);
         UnclickableButtons();
+        if (questionList[currentQuestion].bonusPic.Length != 0)
+        {
+            string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].bonusPic;
+            BonusImage.SetActive(true);
+            Debug.Log(filename);
+            var rawData = File.ReadAllBytes(filename);
+            tex = new Texture2D(0, 0);
+            tex.LoadImage(rawData);
+            BonusImage.GetComponent<RawImage>().texture = tex;
+        }
+
         Button.color=correctColor;
         ButtonText.text="PUIKIOS ŽINIOS!";
         HideCorrectInfo1.text = "";
         HideCorrectInfo2.text = "";
         BonusPanelCorrectText.enabled = true;
         BonusPanelWrongText.enabled = false;
-        BonusPanelCorrectText.text = questionList[currentQuestion].correctAnwserBonus;
+        BonusPanelCorrectText.text = questionList[currentQuestion].bonusInfo;
         Debug.Log(questionList.Count.ToString());
         BonusInfoTime.text=GetComponent<Stopwatch>().CurrentTime();
         StartCoroutine(Wait());
@@ -135,13 +149,23 @@ public class QuizController : MonoBehaviour
         Debug.Log("Wrong Answer");
         GetComponent<ProgressBar>().Increase(1f / numberOfQuestions);
         UnclickableButtons();
+        if (questionList[currentQuestion].bonusPic.Length != 0)
+        {
+            string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].bonusPic;
+            BonusImage.SetActive(true);
+            Debug.Log(filename);
+            var rawData = File.ReadAllBytes(filename);
+            tex = new Texture2D(0, 0);
+            tex.LoadImage(rawData);
+            BonusImage.GetComponent<RawImage>().texture = tex;
+        }
         Button.color=wrongColor;
         ButtonText.text="DEJA...";
         HideCorrectInfo1.text = "Teisingas atsakymas - ";
         HideCorrectInfo2.text = questionList[currentQuestion].ReturnCorrectOptText();
         BonusPanelWrongText.enabled = true;
         BonusPanelCorrectText.enabled = false;
-        BonusPanelWrongText.text = questionList[currentQuestion].wrongAnwserBonus;
+        BonusPanelWrongText.text = questionList[currentQuestion].bonusInfo;
         Debug.Log(questionList.Count.ToString());
         BonusInfoTime.text=GetComponent<Stopwatch>().CurrentTime();
         StartCoroutine(Wait());
@@ -182,7 +206,7 @@ public class QuizController : MonoBehaviour
 
         if (questionList.Count > 0)
         {
-            questionText.text = questionList[currentQuestion].correctAnwserBonus + "<b>" + questionList[currentQuestion].question + "</b>";
+            questionText.text = questionList[currentQuestion].question + "<b>" + questionList[currentQuestion].highlitedText + "</b>";
             questionOutOfQuestionsText.text = "<b>" + questionIndex + " / " + numberOfQuestions + "</b>";
             answeredQuestionsOutOfText.text = "<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
 
@@ -240,15 +264,16 @@ public class QuizController : MonoBehaviour
             string[] parts = line.Trim().Split(';');
             string themeName = parts[0];
             string questionText = parts[1];
-            string opt1 = parts[2];
-            string opt2 = parts[3];
-            string opt3 = parts[4];
-            int correctOpt = int.Parse(parts[5]);
-            string correctBonus = parts[6];
-            string wrongBonus = parts[7];
+            string highlitedText = parts[2];
+            string opt1 = parts[3];
+            string opt2 = parts[4];
+            string opt3 = parts[5];
+            int correctOpt = int.Parse(parts[6]);
+            string bonusInfo = parts[7];
             string picName = parts[8];
+            string bonusPic = parts[9];
 
-            Question newQuestion = new Question(themeName, questionText, opt1, opt2, opt3, correctOpt, correctBonus, wrongBonus, picName);
+            Question newQuestion = new Question(themeName, questionText, highlitedText, opt1, opt2, opt3, correctOpt, bonusInfo, picName, bonusPic);
             questionList.Add(newQuestion);
         }
         return questionList;

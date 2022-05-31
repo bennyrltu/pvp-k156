@@ -141,7 +141,7 @@ public class GameController : MonoBehaviour
         correctAnswers++;
         GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
         UnclickableButtons();
-        BonusPanelText.text = questionList[currentQuestion].correctAnwserBonus;
+        BonusPanelText.text = questionList[currentQuestion].bonusInfo;
         Debug.Log(questionList.Count.ToString());
         StartCoroutine(Wait());
     }
@@ -151,7 +151,7 @@ public class GameController : MonoBehaviour
         Debug.Log("Wrong Answer");
         GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
         UnclickableButtons();
-        BonusPanelText.text = questionList[currentQuestion].wrongAnwserBonus;
+        BonusPanelText.text = questionList[currentQuestion].bonusInfo;
         Debug.Log(questionList.Count.ToString());
         StartCoroutine(Wait());
     }
