@@ -828,6 +828,17 @@ MonoBehaviour:
   originalEllipse: {fileID: 897312019}
   correctEllipse: {fileID: 21300000, guid: ff709df7d15a89b4ca4a9c3f2b3609b5, type: 3}
   incorrectEllipse: {fileID: 21300000, guid: 0f2d3706af5949641a00a6596a0310e1, type: 3}
+--- !u!114 &510889470 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5566606245592877885, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
+  m_PrefabInstance: {fileID: 582105272}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &554415584
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1182,11 +1193,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 576030147716752644, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.0909
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 576030147716752644, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 691518423184825410, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1234,6 +1245,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1344390681529232652, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158083930911243190, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2503080688856793629, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2584498585934989489, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
@@ -1400,6 +1419,14 @@ PrefabInstance:
       propertyPath: m_FontData.m_HorizontalOverflow
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7908802676423313259, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.0909
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908802676423313259, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8032417454545987506, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1527,6 +1554,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPrefab: {fileID: 353350461}
   nextPrefab: {fileID: 1237150743}
+--- !u!114 &838927482 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2503080688856793629, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
+  m_PrefabInstance: {fileID: 582105272}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &886589828 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5580693682628082537, guid: acca47585c8ba3f4eba2e2ce3e6aad0b, type: 3}
@@ -2139,6 +2177,7 @@ MonoBehaviour:
   - {fileID: 906572145}
   questionText: {fileID: 171396418}
   questionOutOfQuestionsText: {fileID: 998788739}
+  questionOutOfQuestionsTextAnwsered: {fileID: 838927482}
   answeredQuestionsOutOfText: {fileID: 1627290329}
   image: {fileID: 2024284944}
   quizPrefab: {fileID: 1656795442}
@@ -2201,6 +2240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1961707788}
+  anwseredslider: {fileID: 510889470}
 --- !u!1001 &1942139297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4135,6 +4175,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7836923216909767020, guid: acca47585c8ba3f4eba2e2ce3e6aad0b, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987213145528007317, guid: acca47585c8ba3f4eba2e2ce3e6aad0b, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069142242905989443, guid: acca47585c8ba3f4eba2e2ce3e6aad0b, type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:

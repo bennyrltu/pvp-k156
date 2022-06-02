@@ -24,6 +24,9 @@ public class QuizController : MonoBehaviour
     Text questionOutOfQuestionsText;
 
     [SerializeField]
+    Text questionOutOfQuestionsTextAnwsered;
+
+    [SerializeField]
     Text answeredQuestionsOutOfText;
 
     int questionIndex = 1;
@@ -131,6 +134,10 @@ public class QuizController : MonoBehaviour
             tex.LoadImage(rawData);
             BonusImage.GetComponent<RawImage>().texture = tex;
         }
+        else
+        {
+            BonusImage.GetComponent<RawImage>().texture = null;
+        }
 
         Button.color=correctColor;
         ButtonText.text="PUIKIOS ŽINIOS!";
@@ -158,6 +165,10 @@ public class QuizController : MonoBehaviour
             tex = new Texture2D(0, 0);
             tex.LoadImage(rawData);
             BonusImage.GetComponent<RawImage>().texture = tex;
+        }
+        else
+        {
+            BonusImage.GetComponent<RawImage>().texture = null;
         }
         Button.color=wrongColor;
         ButtonText.text="DEJA...";
@@ -208,6 +219,7 @@ public class QuizController : MonoBehaviour
         {
             questionText.text = questionList[currentQuestion].question + "<b>" + questionList[currentQuestion].highlitedText + "</b>";
             questionOutOfQuestionsText.text = "<b>" + questionIndex + " / " + numberOfQuestions + "</b>";
+            questionOutOfQuestionsTextAnwsered.text = "<b>" + questionIndex + " / " + numberOfQuestions + "</b>";
             answeredQuestionsOutOfText.text = "<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
 
             if (questionList[currentQuestion].picName.Length != 0)
