@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class QuizController : MonoBehaviour
 {
@@ -18,7 +19,10 @@ public class QuizController : MonoBehaviour
     int currentQuestion;
 
     [SerializeField]
-    Text questionText;
+    Text questionWithImageText;
+
+    [SerializeField]
+    TextMeshProUGUI questionWithoutImageText;
 
     [SerializeField]
     Text questionOutOfQuestionsText;
@@ -101,6 +105,10 @@ public class QuizController : MonoBehaviour
     [SerializeField]
     private Color wrongColor;
 
+    //
+    [SerializeField]
+    TextMeshProUGUI infoText;
+
     void Start()
     {
         questionList = ReadQuestionData(dataFilePath);
@@ -146,6 +154,7 @@ public class QuizController : MonoBehaviour
         BonusPanelCorrectText.enabled = true;
         BonusPanelWrongText.enabled = false;
         BonusPanelCorrectText.text = questionList[currentQuestion].bonusInfo;
+        infoText.text = questionList[currentQuestion].bonusInfo;
         Debug.Log(questionList.Count.ToString());
         BonusInfoTime.text=GetComponent<Stopwatch>().CurrentTime();
         StartCoroutine(Wait());
@@ -177,6 +186,7 @@ public class QuizController : MonoBehaviour
         BonusPanelWrongText.enabled = true;
         BonusPanelCorrectText.enabled = false;
         BonusPanelWrongText.text = questionList[currentQuestion].bonusInfo;
+        infoText.text = "<b>Teisingas atsakymas - <color=#3EBAFF>" + questionList[currentQuestion].ReturnCorrectOptText() + "</b></color>\n\n" + questionList[currentQuestion].bonusInfo;
         Debug.Log(questionList.Count.ToString());
         BonusInfoTime.text=GetComponent<Stopwatch>().CurrentTime();
         StartCoroutine(Wait());
@@ -217,13 +227,16 @@ public class QuizController : MonoBehaviour
 
         if (questionList.Count > 0)
         {
-            questionText.text = questionList[currentQuestion].question + "<b>" + questionList[currentQuestion].highlitedText + "</b>";
             questionOutOfQuestionsText.text = "<b>" + questionIndex + " / " + numberOfQuestions + "</b>";
             questionOutOfQuestionsTextAnwsered.text = "<b>" + questionIndex + " / " + numberOfQuestions + "</b>";
             answeredQuestionsOutOfText.text = "<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
 
             if (questionList[currentQuestion].picName.Length != 0)
             {
+                image.enabled = true;
+                questionWithImageText.enabled = true;
+                questionWithoutImageText.enabled = false;
+                questionWithImageText.text = questionList[currentQuestion].question + "<b>" + questionList[currentQuestion].highlightedText + "</b>";
                 string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].picName;
                 var rawData = File.ReadAllBytes(filename);
                 tex = new Texture2D(0, 0);
@@ -231,6 +244,10 @@ public class QuizController : MonoBehaviour
                 image.texture = tex;
             }
 
+            image.enabled = false;
+            questionWithImageText.enabled = false;
+            questionWithoutImageText.enabled = true;
+            questionWithoutImageText.text = questionList[currentQuestion].question + "<b>" + questionList[currentQuestion].highlightedText + "</b>";
             SetAnswers();
             questionIndex++;
         } 

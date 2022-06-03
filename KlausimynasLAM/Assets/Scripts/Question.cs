@@ -6,7 +6,7 @@ public class Question
 {
     public string themeName { get; set; }
     public string question { get; set; }
-    public string highlitedText { get; set; }
+    public string highlightedText { get; set; }
     public string opt1 { get; set; }
     public string opt2 { get; set; }
     public string opt3 { get; set; }
@@ -19,7 +19,7 @@ public class Question
     {
         themeName = t;
         question = q;
-        highlitedText=qh;
+        highlightedText = qh;
         opt1 = o1;
         opt2 = o2;
         opt3 = o3;
