@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -802,6 +802,17 @@ MonoBehaviour:
   originalEllipse: {fileID: 1721776463}
   correctEllipse: {fileID: 21300000, guid: ff709df7d15a89b4ca4a9c3f2b3609b5, type: 3}
   incorrectEllipse: {fileID: 21300000, guid: 0f2d3706af5949641a00a6596a0310e1, type: 3}
+--- !u!114 &456038376 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5269642914588686321, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
+  m_PrefabInstance: {fileID: 582105272}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &466640952 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4883961702774347098, guid: acca47585c8ba3f4eba2e2ce3e6aad0b, type: 3}
@@ -1434,9 +1445,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.0005493164
       objectReference: {fileID: 0}
+    - target: {fileID: 3845723010119868683, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4542271643308027390, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.000015258789
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906495216331923962, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5544702039701888263, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1444,6 +1463,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5544702039701888263, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566606245592877885, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
+      propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5575898475278947890, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
@@ -1470,13 +1493,17 @@ PrefabInstance:
       propertyPath: m_FontData.m_HorizontalOverflow
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7045242863234301009, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7231333005204571003, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7908802676423313259, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.0909
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7908802676423313259, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1557,6 +1584,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6138402670899802568, guid: afbd31672b4f8fb41ac8438215c95ea0, type: 3}
   m_PrefabInstance: {fileID: 808592442725401276}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &720525924 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6374899059852649245, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
+  m_PrefabInstance: {fileID: 582105272}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &830404899 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 39734267849819122, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
@@ -1818,6 +1856,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1119196269 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7352530100040886802, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
+  m_PrefabInstance: {fileID: 582105272}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1147532696 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3125934181850511314, guid: 8f064049d0d07104584c033f589a3795, type: 3}
@@ -2008,6 +2057,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8587017440751121672, guid: ede92a70e807df841b5861179cf2422a, type: 3}
   m_PrefabInstance: {fileID: 4377040857183998723}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1610435221 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5388862711708487936, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
+  m_PrefabInstance: {fileID: 582105272}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1627290329 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8069142242905989443, guid: acca47585c8ba3f4eba2e2ce3e6aad0b, type: 3}
@@ -2222,12 +2282,12 @@ MonoBehaviour:
   elapsedTimeText: {fileID: 1115615490}
   enlargedImagePanel: {fileID: 1842110444}
   BonusTextPanel: {fileID: 1717856474}
-  BonusPanelCorrectText: {fileID: 0}
-  HideCorrectInfo1: {fileID: 0}
-  HideCorrectInfo2: {fileID: 0}
+  BonusPanelCorrectText: {fileID: 456038376}
+  HideCorrectInfo1: {fileID: 1119196269}
+  HideCorrectInfo2: {fileID: 1610435221}
   BonusInfoTime: {fileID: 830404899}
   BonusInfoCorrect: {fileID: 1742028502}
-  BonusPanelWrongText: {fileID: 0}
+  BonusPanelWrongText: {fileID: 720525924}
   Button: {fileID: 1915111951}
   ButtonText: {fileID: 1447652142}
   BonusImage: {fileID: 1415379428}
