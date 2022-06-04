@@ -119,7 +119,7 @@ public class QuizController : MonoBehaviour
     {
         correctAnswers++;
         answeredQuestionsOutOfText.text = "<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
-        GetComponent<ProgressBar>().Increase(1f / numberOfQuestions);
+        GetComponent<ProgressBar>().Increase(1f / (numberOfQuestions+1));
         UnclickableButtons();
         if (questionList[currentQuestion].bonusPic.Length != 0)
         {
@@ -149,7 +149,7 @@ public class QuizController : MonoBehaviour
 
     public void Wrong()
     {
-        GetComponent<ProgressBar>().Increase(1f / numberOfQuestions);
+        GetComponent<ProgressBar>().Increase(1f / (numberOfQuestions+1));
         UnclickableButtons();
         if (questionList[currentQuestion].bonusPic.Length != 0)
         {
