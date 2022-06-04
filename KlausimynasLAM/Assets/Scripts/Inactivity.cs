@@ -3,11 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class Inactivity : MonoBehaviour
 {
+    [SerializeField]
+    int InactivityTimeInSeconds;
+
     private Vector3 prevPosition = Vector3.zero;
     void ShowGameHintInvoke()
     {
         CancelInvoke();
-        Invoke("ResetAfterInactivity", 180);
+        Invoke("ResetAfterInactivity", InactivityTimeInSeconds);
     }
     void ResetAfterInactivity()
     {

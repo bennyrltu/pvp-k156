@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class Stopwatch : MonoBehaviour
 {
@@ -8,9 +9,24 @@ public class Stopwatch : MonoBehaviour
     float seconds;
     float minutes;
 
+    [SerializeField] string OverTimeDuration;
+
     [SerializeField] Text StopWatchText;
+
     [SerializeField]
     GameObject quizPrefab;
+
+    [SerializeField]
+    GameObject resultPrefab;
+
+    [SerializeField]
+    Text correctAnswersNumber;
+
+    [SerializeField]
+    Text incorrectAnswersNumber;
+
+    [SerializeField]
+    Text elapsedTimeText;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +41,6 @@ public class Stopwatch : MonoBehaviour
         {
             Calc();
         }
-        //Calc();
     }
 
     void Calc()
@@ -34,6 +49,14 @@ public class Stopwatch : MonoBehaviour
             seconds = (int)(timer % 60);
             minutes = (int)((timer / 60) % 60);
             StopWatchText.text = minutes.ToString("00") + ":" + seconds.ToString("00");
+
+        if (StopWatchText.text == OverTimeDuration)
+        {
+            enabled=false;
+            GetComponent<QuizController>().SetResultsOverTime(correctAnswersNumber, incorrectAnswersNumber, elapsedTimeText);
+            ChangePrefabs(quizPrefab, resultPrefab);
+
+        }
     }
 
     public string CurrentTime()
@@ -45,5 +68,12 @@ public class Stopwatch : MonoBehaviour
     {
         Debug.Log(StopWatchText.text);
     }
+
+    void ChangePrefabs(GameObject prefab1, GameObject prefab2)
+    {
+        prefab1.SetActive(false);
+        prefab2.SetActive(true);
+    }
+
 
 }

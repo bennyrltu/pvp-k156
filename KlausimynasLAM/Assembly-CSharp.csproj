@@ -68,7 +68,7 @@
     <Compile Include="Assets\Scripts\Reset.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
     <Compile Include="Assets\Scripts\Leaderboard.cs" />
-    <Compile Include="Assets\NewScripts\QuizController.cs" />
+    <Compile Include="Assets\Scripts\QuizController.cs" />
     <Compile Include="Assets\Scripts\Stopwatch.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanTest.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
