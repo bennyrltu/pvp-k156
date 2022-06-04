@@ -53,7 +53,7 @@ public class Stopwatch : MonoBehaviour
         if (StopWatchText.text == OverTimeDuration)
         {
             enabled=false;
-            GetComponent<QuizController>().SetResultsOverTime(correctAnswersNumber, incorrectAnswersNumber, elapsedTimeText);
+            GetComponent<QuizController>().SetResults(correctAnswersNumber, incorrectAnswersNumber, elapsedTimeText);
             ChangePrefabs(quizPrefab, resultPrefab);
 
         }
@@ -62,11 +62,6 @@ public class Stopwatch : MonoBehaviour
     public string CurrentTime()
     {
         return minutes.ToString("00") + ":" + seconds.ToString("00");
-    }
-
-    public void PrintTime()
-    {
-        Debug.Log(StopWatchText.text);
     }
 
     void ChangePrefabs(GameObject prefab1, GameObject prefab2)

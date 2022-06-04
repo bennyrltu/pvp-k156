@@ -1109,8 +1109,6 @@ MonoBehaviour:
   questionOutOfQuestionsText: {fileID: 998788739}
   questionOutOfQuestionsTextAnwsered: {fileID: 838927482}
   answeredQuestionsOutOfText: {fileID: 1627290329}
-  correctAnswers: 0
-  incorrectAnswers: 0
   image: {fileID: 2024284944}
   quizPrefab: {fileID: 1656795442}
   resultsPrefab: {fileID: 267845450}
@@ -1699,7 +1697,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 509915668769846528, guid: acca47585c8ba3f4eba2e2ce3e6aad0b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PreviousQuestion
+      value: DelFromHistory
       objectReference: {fileID: 0}
     - target: {fileID: 509915668769846528, guid: acca47585c8ba3f4eba2e2ce3e6aad0b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -1995,7 +1993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4217222497203439466, guid: acca47585c8ba3f4eba2e2ce3e6aad0b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: NextQuestion
+      value: AddToHistory
       objectReference: {fileID: 0}
     - target: {fileID: 4217222497203439466, guid: acca47585c8ba3f4eba2e2ce3e6aad0b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

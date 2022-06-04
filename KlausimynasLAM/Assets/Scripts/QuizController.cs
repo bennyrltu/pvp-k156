@@ -35,9 +35,9 @@ public class QuizController : MonoBehaviour
 
     int questionIndex = 1;
 
-    public int correctAnswers = 0;
+    int correctAnswers = 0;
 
-    public int incorrectAnswers = 0;
+    int incorrectAnswers = 0;
 
     int numberOfQuestions = 0;
 
@@ -105,7 +105,6 @@ public class QuizController : MonoBehaviour
     [SerializeField]
     private Color wrongColor;
 
-    //
     [SerializeField]
     TextMeshProUGUI infoText;
 
@@ -118,7 +117,6 @@ public class QuizController : MonoBehaviour
 
     public void Correct()
     {
-        Debug.Log("Correct Answer");
         correctAnswers++;
         answeredQuestionsOutOfText.text = "<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
         GetComponent<ProgressBar>().Increase(1f / numberOfQuestions);
@@ -127,7 +125,6 @@ public class QuizController : MonoBehaviour
         {
             string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].bonusPic;
             BonusImage.SetActive(true);
-            Debug.Log(filename);
             var rawData = File.ReadAllBytes(filename);
             tex = new Texture2D(0, 0);
             tex.LoadImage(rawData);
@@ -146,21 +143,18 @@ public class QuizController : MonoBehaviour
         BonusPanelWrongText.enabled = false;
         BonusPanelCorrectText.text = questionList[currentQuestion].bonusInfo;
         infoText.text = questionList[currentQuestion].bonusInfo;
-        Debug.Log(questionList.Count.ToString());
         BonusInfoTime.text=GetComponent<Stopwatch>().CurrentTime();
         StartCoroutine(Wait());
     }
 
     public void Wrong()
     {
-        Debug.Log("Wrong Answer");
         GetComponent<ProgressBar>().Increase(1f / numberOfQuestions);
         UnclickableButtons();
         if (questionList[currentQuestion].bonusPic.Length != 0)
         {
             string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].bonusPic;
             BonusImage.SetActive(true);
-            Debug.Log(filename);
             var rawData = File.ReadAllBytes(filename);
             tex = new Texture2D(0, 0);
             tex.LoadImage(rawData);
@@ -178,7 +172,6 @@ public class QuizController : MonoBehaviour
         BonusPanelCorrectText.enabled = false;
         BonusPanelWrongText.text = questionList[currentQuestion].bonusInfo;
         infoText.text = "<b>Teisingas atsakymas - <color=#3EBAFF>" + questionList[currentQuestion].ReturnCorrectOptText() + "</b></color>\n\n" + questionList[currentQuestion].bonusInfo;
-        Debug.Log(questionList.Count.ToString());
         BonusInfoTime.text=GetComponent<Stopwatch>().CurrentTime();
         StartCoroutine(Wait());
     }
@@ -244,7 +237,6 @@ public class QuizController : MonoBehaviour
         } 
         else
         {
-            timespan = GetComponent<Stopwatch>().CurrentTime();
             GetComponent<Stopwatch>().enabled = false;
             incorrectAnswers = numberOfQuestions - correctAnswers;
             SetResults(correctAnswersNumber, incorrectAnswersNumber, elapsedTimeText);
@@ -307,19 +299,11 @@ public class QuizController : MonoBehaviour
 
     public void SetResults(Text correct, Text incorrect, Text timeElapsed)
     {
-        correct.text = correctAnswers.ToString();
-        incorrect.text = incorrectAnswers.ToString();
-        timeElapsed.text = timespan;
-    }
-
-    public void SetResultsOverTime(Text correct, Text incorrect, Text timeElapsed)
-    {
         timespan = GetComponent<Stopwatch>().CurrentTime();
         correct.text = correctAnswers.ToString();
         incorrect.text = incorrectAnswers.ToString();
         timeElapsed.text = timespan;
     }
-
     public void EnlargeImage()
     {
         GetComponent<Stopwatch>().enabled = false;

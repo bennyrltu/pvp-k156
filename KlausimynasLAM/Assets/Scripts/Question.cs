@@ -28,22 +28,21 @@ public class Question
         picName = pic;
         bonusPic = bonuspic;
     }
-
     public string ReturnCorrectOptText()
     {
         if (correctOpt == 1)
         {
-            return opt1.ToString();
+            return opt1;
         }
 
         if (correctOpt == 2)
         {
-            return opt2.ToString();
+            return opt2;
         }
 
         if (correctOpt == 3)
         {
-            return opt3.ToString();
+            return opt3;
         }
         return "";
     }

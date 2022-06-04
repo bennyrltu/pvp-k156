@@ -108,7 +108,7 @@ public class GameController : MonoBehaviour
         else
         {
             Debug.Log("Out of questions");
-            GetComponent<Stopwatch>().PrintTime();
+            //GetComponent<Stopwatch>().PrintTime();
             timespan = GetComponent<Stopwatch>().CurrentTime();
             GetComponent<Stopwatch>().enabled = false;
             ChangePrefabs(quizPrefab, usernamePrefab);
@@ -139,7 +139,7 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("Correct Answer");
         correctAnswers++;
-        GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
+        GetComponent<ProgressBar>().Increase(1f/numberOfQuestions+1);
         UnclickableButtons();
         BonusPanelText.text = questionList[currentQuestion].bonusInfo;
         Debug.Log(questionList.Count.ToString());
@@ -149,7 +149,7 @@ public class GameController : MonoBehaviour
     public void Wrong()
     {
         Debug.Log("Wrong Answer");
-        GetComponent<ProgressBar>().Increase(1f/numberOfQuestions);
+        GetComponent<ProgressBar>().Increase(1f/numberOfQuestions+1);
         UnclickableButtons();
         BonusPanelText.text = questionList[currentQuestion].bonusInfo;
         Debug.Log(questionList.Count.ToString());

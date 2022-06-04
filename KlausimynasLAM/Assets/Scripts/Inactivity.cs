@@ -15,7 +15,6 @@ public class Inactivity : MonoBehaviour
     void ResetAfterInactivity()
     {
         SceneManager.LoadScene("MainScene");
-        Debug.Log("Game was reset because of inactivity");
     }
     // Update is called once per frame
     void Update()
