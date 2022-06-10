@@ -55,6 +55,9 @@ public class QuizController : MonoBehaviour
     GameObject resultsPrefab;
 
     [SerializeField]
+    GameObject anwseredQuizPrefab;
+
+    [SerializeField]
     Sprite originalEllipse;
 
     [SerializeField]
@@ -117,6 +120,7 @@ public class QuizController : MonoBehaviour
 
     public void Correct()
     {
+        ColorOnClick();
         correctAnswers++;
         answeredQuestionsOutOfText.text = "<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
         GetComponent<ProgressBar>().Increase(1f / (numberOfQuestions+1));
@@ -149,6 +153,7 @@ public class QuizController : MonoBehaviour
 
     public void Wrong()
     {
+        ColorOnClick();
         GetComponent<ProgressBar>().Increase(1f / (numberOfQuestions+1));
         UnclickableButtons();
         if (questionList[currentQuestion].bonusPic.Length != 0)
@@ -246,23 +251,35 @@ public class QuizController : MonoBehaviour
 
     void SetAnswers()
     {
-        //options[0].transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].opt1;
-        //options[1].transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].opt2;
-        //options[2].transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].opt3;
         options[0].transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].opt1;
         options[1].transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].opt2;
         options[2].transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = questionList[currentQuestion].opt3;
-
         for (int i = 0; i < options.Length; i++)
         {
             options[i].GetComponent<AnswerScript>().isCorrect = false;
             options[i].GetComponent<Button>().interactable = true;
             options[i].GetComponent<Image>().color = options[i].GetComponent<AnswerScript>().startColor;
             options[i].transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().sprite = originalEllipse;
+            options[i].transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color = Color.white;
 
             if (questionList[currentQuestion].correctOpt == i + 1)
             {
                 options[i].GetComponent<AnswerScript>().isCorrect = true;
+            }
+        }
+    }
+
+    void ColorOnClick()
+    {
+        for (int i = 0; i < options.Length; i++)
+        {
+            options[i].GetComponent<Image>().color = options[i].GetComponent<AnswerScript>().wrongColor;
+            options[i].transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color =options[i].GetComponent<AnswerScript>().wrongColor;
+
+            if (questionList[currentQuestion].correctOpt == i + 1)
+            {
+                options[i].GetComponent<Image>().color = options[i].GetComponent<AnswerScript>().correctColor;
+                options[i].transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color =options[i].GetComponent<AnswerScript>().correctColor;
             }
         }
     }
@@ -315,5 +332,10 @@ public class QuizController : MonoBehaviour
     {
         enlargedImagePanel.SetActive(false);
         GetComponent<Stopwatch>().enabled = true;
+    }
+
+    public void NextQuestion()
+    {
+        ChangePrefabs(anwseredQuizPrefab, quizPrefab);
     }
 }

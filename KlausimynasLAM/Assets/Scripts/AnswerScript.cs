@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class AnswerScript : MonoBehaviour
 {
-    public bool isCorrect = false;
+    public bool isCorrect;
 
     [SerializeField]
     //private GameController gameController;
@@ -15,10 +15,10 @@ public class AnswerScript : MonoBehaviour
     public Color startColor;
 
     [SerializeField]
-    private Color correctColor;
+    public Color correctColor;
 
     [SerializeField]
-    private Color wrongColor;
+    public Color wrongColor;
 
     public Image originalEllipse;
 
@@ -27,12 +27,6 @@ public class AnswerScript : MonoBehaviour
 
     [SerializeField]
     private Sprite incorrectEllipse;
-
-    private void Start()
-    {
-        startColor = buttonImage.color;
-    }
-
     public void CheckAnswer()
     {
         if (isCorrect)
