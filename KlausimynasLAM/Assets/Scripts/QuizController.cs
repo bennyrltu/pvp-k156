@@ -136,7 +136,8 @@ public class QuizController : MonoBehaviour
         }
         else
         {
-            BonusImage.GetComponent<RawImage>().texture = null;
+            //BonusImage.GetComponent<RawImage>().texture = null;
+            BonusImage.SetActive(false);
         }
 
         Button.color=correctColor;
@@ -167,8 +168,10 @@ public class QuizController : MonoBehaviour
         }
         else
         {
-            BonusImage.GetComponent<RawImage>().texture = null;
+            //BonusImage.GetComponent<RawImage>().texture = null;
+            BonusImage.SetActive(false);
         }
+
         Button.color=wrongColor;
         ButtonText.text="DEJA...";
         HideCorrectInfo1.text = "Teisingas atsakymas - ";
@@ -274,12 +277,12 @@ public class QuizController : MonoBehaviour
         for (int i = 0; i < options.Length; i++)
         {
             options[i].GetComponent<Image>().color = options[i].GetComponent<AnswerScript>().wrongColor;
-            options[i].transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color =options[i].GetComponent<AnswerScript>().wrongColor;
+            options[i].transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color = options[i].GetComponent<AnswerScript>().wrongColor;
 
             if (questionList[currentQuestion].correctOpt == i + 1)
             {
                 options[i].GetComponent<Image>().color = options[i].GetComponent<AnswerScript>().correctColor;
-                options[i].transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color =options[i].GetComponent<AnswerScript>().correctColor;
+                options[i].transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color = options[i].GetComponent<AnswerScript>().correctColor;
             }
         }
     }
