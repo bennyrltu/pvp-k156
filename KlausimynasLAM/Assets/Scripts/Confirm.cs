@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Confirm : MonoBehaviour
 {
-
     [SerializeField]
     private Button Opt1;
 
@@ -14,7 +13,6 @@ public class Confirm : MonoBehaviour
 
     [SerializeField]
     private Button Opt3;
-
     public void ConfirmSelection()
     {
         if (Opt1.GetComponent<AnswerScript>().firstClicked == true)
@@ -34,7 +32,5 @@ public class Confirm : MonoBehaviour
             Opt3.GetComponent<AnswerScript>().CheckAnswer();
             Opt3.GetComponent<AnswerScript>().RestoreBools();
         }
-
-
     }
 }

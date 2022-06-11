@@ -62,8 +62,8 @@ public class AnswerScript : MonoBehaviour
         Opt2.GetComponent<Image>().color = Color.white;
         Opt3.GetComponent<Image>().color = Color.white;
         firstClicked=true;
-        secondClicked=false;
-        thirdClicked=false;
+        Opt2.GetComponent<AnswerScript>().secondClicked=false;
+        Opt3.GetComponent<AnswerScript>().thirdClicked=false;
     }
 
     public void ClickSecond()
@@ -71,9 +71,9 @@ public class AnswerScript : MonoBehaviour
         Opt1.GetComponent<Image>().color = Color.white;
         Opt2.GetComponent<Image>().color = Color.gray;
         Opt3.GetComponent<Image>().color = Color.white;
-        firstClicked=false;
+        Opt1.GetComponent<AnswerScript>().firstClicked=false;
         secondClicked=true;
-        thirdClicked=false;
+        Opt3.GetComponent<AnswerScript>().thirdClicked=false;
     }
 
     public void ClickThird()
@@ -81,8 +81,8 @@ public class AnswerScript : MonoBehaviour
         Opt1.GetComponent<Image>().color = Color.white;
         Opt2.GetComponent<Image>().color = Color.white;
         Opt3.GetComponent<Image>().color = Color.gray;
-        firstClicked=false;
-        secondClicked=false;
+        Opt1.GetComponent<AnswerScript>().firstClicked=false;
+        Opt2.GetComponent<AnswerScript>().secondClicked=false;
         thirdClicked=true;
     }
 

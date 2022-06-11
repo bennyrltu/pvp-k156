@@ -130,7 +130,7 @@ public class QuizController : MonoBehaviour
         ColorOnClick();
         correctAnswers++;
         answeredQuestionsOutOfText.text = "<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
-        GetComponent<ProgressBar>().Increase(1f / (numberOfQuestions+1));
+        GetComponent<ProgressBar>().Increase(1f / (numberOfQuestions));
         UnclickableButtons();
         if (questionList[currentQuestion].bonusPic.Length != 0)
         {
@@ -148,7 +148,7 @@ public class QuizController : MonoBehaviour
         }
 
         Button.color=correctColor;
-        ButtonText.text="PUIKIOS �INIOS!";
+        ButtonText.text="PUIKIOS ŽINIOS!";
         HideCorrectInfo1.text = "";
         HideCorrectInfo2.text = "";
         BonusPanelCorrectText.enabled = true;
@@ -162,7 +162,7 @@ public class QuizController : MonoBehaviour
     public void Wrong()
     {
         ColorOnClick();
-        GetComponent<ProgressBar>().Increase(1f / (numberOfQuestions+1));
+        GetComponent<ProgressBar>().Increase(1f / (numberOfQuestions));
         UnclickableButtons();
         if (questionList[currentQuestion].bonusPic.Length != 0)
         {
@@ -193,6 +193,7 @@ public class QuizController : MonoBehaviour
 
     IEnumerator Wait()
     {
+        questionIndex++;
         GetComponent<Stopwatch>().enabled = false;
         BonusInfoCorrect.text="<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
         yield return new WaitForSeconds(2);
@@ -227,8 +228,8 @@ public class QuizController : MonoBehaviour
 
         if (questionList.Count == 1)
         {
-            EndQuiz.text = "U�BAIGTI KLAUSIMYN?";
-            SeeResults.text = "PER�I?R?TI REZULTATUS";
+            EndQuiz.text = "UŽBAIGTI KLAUSIMYNĄ";
+            SeeResults.text = "PERŽIŪRĖTI REZULTATUS";
         }
 
         if (questionList.Count > 0)
@@ -255,7 +256,6 @@ public class QuizController : MonoBehaviour
             questionWithoutImageText.enabled = true;
             questionWithoutImageText.text = questionList[currentQuestion].question + "<b>" + questionList[currentQuestion].highlightedText + "</b>";
             SetAnswers();
-            questionIndex++;
         }
         else
         {
@@ -355,4 +355,5 @@ public class QuizController : MonoBehaviour
     {
         ChangePrefabs(anwseredQuizPrefab, quizPrefab);
     }
+
 }
