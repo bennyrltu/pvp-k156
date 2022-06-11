@@ -111,6 +111,13 @@ public class QuizController : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI infoText;
 
+    [SerializeField]
+    Text EndQuiz;
+
+    [SerializeField]
+    Text SeeResults;
+
+
     void Start()
     {
         questionList = ReadQuestionData(dataFilePath);
@@ -217,6 +224,13 @@ public class QuizController : MonoBehaviour
         GetComponent<Stopwatch>().enabled = true;
         currentQuestion = Random.Range(0, questionList.Count);
 
+
+        if (questionList.Count == 1)
+        {
+            EndQuiz.text = "UŽBAIGTI KLAUSIMYN?";
+            SeeResults.text = "PERŽI?R?TI REZULTATUS";
+        }
+
         if (questionList.Count > 0)
         {
             questionOutOfQuestionsText.text = "<b>" + questionIndex + " / " + numberOfQuestions + "</b>";
@@ -242,7 +256,7 @@ public class QuizController : MonoBehaviour
             questionWithoutImageText.text = questionList[currentQuestion].question + "<b>" + questionList[currentQuestion].highlightedText + "</b>";
             SetAnswers();
             questionIndex++;
-        } 
+        }
         else
         {
             GetComponent<Stopwatch>().enabled = false;
