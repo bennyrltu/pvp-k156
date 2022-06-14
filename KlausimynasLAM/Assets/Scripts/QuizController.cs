@@ -117,6 +117,8 @@ public class QuizController : MonoBehaviour
     [SerializeField]
     Text SeeResults;
 
+    [SerializeField]
+    GameObject confirmAnswerButton;
 
     void Start()
     {
@@ -156,7 +158,11 @@ public class QuizController : MonoBehaviour
         BonusPanelCorrectText.text = questionList[currentQuestion].bonusInfo;
         infoText.text = questionList[currentQuestion].bonusInfo;
         BonusInfoTime.text=GetComponent<Stopwatch>().CurrentTime();
-        StartCoroutine(Wait());
+        //StartCoroutine(Wait());
+        questionIndex++;
+        GetComponent<Stopwatch>().enabled = false;
+        BonusInfoCorrect.text = "<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
+        BonusTextPanel.SetActive(true);
     }
 
     public void Wrong()
@@ -188,7 +194,11 @@ public class QuizController : MonoBehaviour
         BonusPanelWrongText.text = questionList[currentQuestion].bonusInfo;
         infoText.text = "<b>Teisingas atsakymas - <color=#3EBAFF>" + questionList[currentQuestion].ReturnCorrectOptText() + "</b></color>\n\n" + questionList[currentQuestion].bonusInfo;
         BonusInfoTime.text=GetComponent<Stopwatch>().CurrentTime();
-        StartCoroutine(Wait());
+        //StartCoroutine(Wait());
+        questionIndex++;
+        GetComponent<Stopwatch>().enabled = false;
+        BonusInfoCorrect.text = "<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
+        BonusTextPanel.SetActive(true);
     }
 
     IEnumerator Wait()
@@ -293,10 +303,16 @@ public class QuizController : MonoBehaviour
             options[i].GetComponent<Image>().color = options[i].GetComponent<AnswerScript>().wrongColor;
             options[i].transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color = options[i].GetComponent<AnswerScript>().wrongColor;
 
+            // pridetas
+            options[i].transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().sprite = options[i].GetComponent<AnswerScript>().incorrectEllipse;
+
             if (questionList[currentQuestion].correctOpt == i + 1)
             {
                 options[i].GetComponent<Image>().color = options[i].GetComponent<AnswerScript>().correctColor;
                 options[i].transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().color = options[i].GetComponent<AnswerScript>().correctColor;
+
+                // pridetas
+                options[i].transform.GetChild(0).transform.GetChild(1).GetComponent<Image>().sprite = options[i].GetComponent<AnswerScript>().correctEllipse;
             }
         }
     }
@@ -338,6 +354,7 @@ public class QuizController : MonoBehaviour
         incorrect.text = incorrectAnswers.ToString();
         timeElapsed.text = timespan;
     }
+
     public void EnlargeImage()
     {
         GetComponent<Stopwatch>().enabled = false;
@@ -354,6 +371,30 @@ public class QuizController : MonoBehaviour
     public void NextQuestion()
     {
         ChangePrefabs(anwseredQuizPrefab, quizPrefab);
+        questionList = questionList.Where(x => x.themeName != questionList[currentQuestion].themeName).ToList();
+        SetQuestionData();
+        confirmAnswerButton.SetActive(true);
     }
 
+    public void BackToQuestion()
+    {
+        ChangePrefabs(anwseredQuizPrefab, quizPrefab);
+        confirmAnswerButton.SetActive(false);
+    }
+
+    public void BackToQuestionInfo()
+    {
+        for (int i = 0; i < options.Length; i++)
+        {
+            if (options[i].GetComponent<AnswerScript>().isCorrect == true)
+            {
+                options[i].transform.GetChild(0).transform.GetChild(1).GetComponent<Button>().interactable = true;
+                ChangePrefabs(quizPrefab, anwseredQuizPrefab);
+            }
+            else
+            {
+                options[i].transform.GetChild(0).transform.GetChild(1).GetComponent<Button>().interactable = false;
+            }
+        }
+    }
 }

@@ -22,10 +22,10 @@ public class AnswerScript : MonoBehaviour
     public Image originalEllipse;
 
     [SerializeField]
-    private Sprite correctEllipse;
+    public Sprite correctEllipse;
 
     [SerializeField]
-    private Sprite incorrectEllipse;
+    public Sprite incorrectEllipse;
 
     [SerializeField]
     private Button Opt1;
