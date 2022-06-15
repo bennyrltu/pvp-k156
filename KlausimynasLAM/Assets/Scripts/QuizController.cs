@@ -79,22 +79,10 @@ public class QuizController : MonoBehaviour
     public GameObject BonusTextPanel;
 
     [SerializeField]
-    Text BonusPanelCorrectText;
-
-    [SerializeField]
-    public Text HideCorrectInfo1;
-
-    [SerializeField]
-    public Text HideCorrectInfo2;
-
-    [SerializeField]
     public Text BonusInfoTime;
 
     [SerializeField]
     public Text BonusInfoCorrect;
-
-    [SerializeField]
-    Text BonusPanelWrongText;
 
     [SerializeField]
     Image Button;
@@ -128,7 +116,18 @@ public class QuizController : MonoBehaviour
 
     void Start()
     {
-        questionList = ReadQuestionData(dataFilePath);
+        // androidui
+        string androidPath = Path.Combine(Application.persistentDataPath, "dataNew.csv");
+        Directory.CreateDirectory(Application.persistentDataPath + "Images");
+        if (!File.Exists(androidPath))
+        {
+            TextAsset dataFile = Resources.Load("dataNew") as TextAsset;
+            string content = dataFile.ToString();
+            File.WriteAllText(androidPath, content);
+        }
+        questionList = ReadQuestionData(androidPath);
+        //------------------
+        //questionList = ReadQuestionData(dataFilePath);
         GetTotalQuestionsNumber();
         SetQuestionData();
     }
@@ -142,7 +141,13 @@ public class QuizController : MonoBehaviour
         UnclickableButtons();
         if (questionList[currentQuestion].picName.Length != 0)
         {
-            string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].picName;
+            //string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].picName;
+            //BonusImage.SetActive(true);
+            //var rawData = File.ReadAllBytes(filename);
+            //tex = new Texture2D(0, 0);
+            //tex.LoadImage(rawData);
+            //BonusImage.GetComponent<RawImage>().texture = tex;
+            string filename = Application.persistentDataPath + "Images/" + questionList[currentQuestion].picName;
             BonusImage.SetActive(true);
             var rawData = File.ReadAllBytes(filename);
             tex = new Texture2D(0, 0);
@@ -157,11 +162,6 @@ public class QuizController : MonoBehaviour
 
         Button.color=correctColor;
         ButtonText.text="PUIKIOS ŽINIOS!";
-        HideCorrectInfo1.text = "";
-        HideCorrectInfo2.text = "";
-        BonusPanelCorrectText.enabled = true;
-        BonusPanelWrongText.enabled = false;
-        BonusPanelCorrectText.text = questionList[currentQuestion].bonusInfo;
         infoText.text = questionList[currentQuestion].bonusInfo;
         BonusInfoTime.text=GetComponent<Stopwatch>().CurrentTime();
         //StartCoroutine(Wait());
@@ -178,7 +178,13 @@ public class QuizController : MonoBehaviour
         UnclickableButtons();
         if (questionList[currentQuestion].picName.Length != 0)
         {
-            string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].picName;
+            //string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].picName;
+            //BonusImage.SetActive(true);
+            //var rawData = File.ReadAllBytes(filename);
+            //tex = new Texture2D(0, 0);
+            //tex.LoadImage(rawData);
+            //BonusImage.GetComponent<RawImage>().texture = tex;
+            string filename = Application.persistentDataPath + "Images/" + questionList[currentQuestion].picName;
             BonusImage.SetActive(true);
             var rawData = File.ReadAllBytes(filename);
             tex = new Texture2D(0, 0);
@@ -193,11 +199,6 @@ public class QuizController : MonoBehaviour
 
         Button.color=wrongColor;
         ButtonText.text="DEJA...";
-        HideCorrectInfo1.text = "Teisingas atsakymas - ";
-        HideCorrectInfo2.text = questionList[currentQuestion].ReturnCorrectOptText();
-        BonusPanelWrongText.enabled = true;
-        BonusPanelCorrectText.enabled = false;
-        BonusPanelWrongText.text = questionList[currentQuestion].bonusInfo;
         infoText.text = "<b>Teisingas atsakymas - <color=#3EBAFF>" + questionList[currentQuestion].ReturnCorrectOptText() + "</b></color>\n\n" + questionList[currentQuestion].bonusInfo;
         BonusInfoTime.text=GetComponent<Stopwatch>().CurrentTime();
         //StartCoroutine(Wait());
@@ -257,11 +258,20 @@ public class QuizController : MonoBehaviour
 
             if (questionList[currentQuestion].picName.Length != 0)
             {
+                //image.enabled = true;
+                //questionWithImageText.enabled = true;
+                //questionWithoutImageText.enabled = false;
+                //questionWithImageText.text = questionList[currentQuestion].question + "<b>" + questionList[currentQuestion].highlightedText + "</b>";
+                //string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].picName;
+                //var rawData = File.ReadAllBytes(filename);
+                //tex = new Texture2D(0, 0);
+                //tex.LoadImage(rawData);
+                //image.texture = tex;
                 image.enabled = true;
                 questionWithImageText.enabled = true;
                 questionWithoutImageText.enabled = false;
                 questionWithImageText.text = questionList[currentQuestion].question + "<b>" + questionList[currentQuestion].highlightedText + "</b>";
-                string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].picName;
+                string filename = Application.persistentDataPath + "Images/" + questionList[currentQuestion].picName;
                 var rawData = File.ReadAllBytes(filename);
                 tex = new Texture2D(0, 0);
                 tex.LoadImage(rawData);
@@ -275,10 +285,6 @@ public class QuizController : MonoBehaviour
                 questionWithoutImageText.text = questionList[currentQuestion].question + "<b>" + questionList[currentQuestion].highlightedText + "</b>";
             }
 
-            //image.enabled = false;
-            //questionWithImageText.enabled = false;
-            //questionWithoutImageText.enabled = true;
-            //questionWithoutImageText.text = questionList[currentQuestion].question + "<b>" + questionList[currentQuestion].highlightedText + "</b>";
             SetAnswers();
         }
         else
@@ -334,7 +340,7 @@ public class QuizController : MonoBehaviour
     public List<Question> ReadQuestionData(string fileName)
     {
         List<Question> questionList = new List<Question>();
-        string[] lines = File.ReadAllLines(fileName, Encoding.BigEndianUnicode).Skip(1).ToArray();
+        string[] lines = File.ReadAllLines(fileName).Skip(1).ToArray();
         foreach (var line in lines)
         {
             string[] parts = line.Trim().Split(';');
