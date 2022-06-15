@@ -73,6 +73,9 @@ public class QuizController : MonoBehaviour
     GameObject enlargedImagePanel;
 
     [SerializeField]
+    GameObject enlargedImagePanel2;
+
+    [SerializeField]
     public GameObject BonusTextPanel;
 
     [SerializeField]
@@ -119,6 +122,9 @@ public class QuizController : MonoBehaviour
 
     [SerializeField]
     GameObject confirmAnswerButton;
+
+    [SerializeField]
+    GameObject nextQuestionButton;
 
     void Start()
     {
@@ -234,6 +240,7 @@ public class QuizController : MonoBehaviour
     {
         GetComponent<Stopwatch>().enabled = true;
         currentQuestion = Random.Range(0, questionList.Count);
+        nextQuestionButton.SetActive(false);
 
 
         if (questionList.Count == 1)
@@ -248,23 +255,30 @@ public class QuizController : MonoBehaviour
             questionOutOfQuestionsTextAnwsered.text = "<b>" + questionIndex + " / " + numberOfQuestions + "</b>";
             answeredQuestionsOutOfText.text = "<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
 
-            if (questionList[currentQuestion].picName.Length != 0)
+            if (questionList[currentQuestion].bonusPic.Length != 0)
             {
                 image.enabled = true;
                 questionWithImageText.enabled = true;
                 questionWithoutImageText.enabled = false;
                 questionWithImageText.text = questionList[currentQuestion].question + "<b>" + questionList[currentQuestion].highlightedText + "</b>";
-                string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].picName;
+                string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].bonusPic;
                 var rawData = File.ReadAllBytes(filename);
                 tex = new Texture2D(0, 0);
                 tex.LoadImage(rawData);
                 image.texture = tex;
+            } 
+            else
+            {
+                image.enabled = false;
+                questionWithImageText.enabled = false;
+                questionWithoutImageText.enabled = true;
+                questionWithoutImageText.text = questionList[currentQuestion].question + "<b>" + questionList[currentQuestion].highlightedText + "</b>";
             }
 
-            image.enabled = false;
-            questionWithImageText.enabled = false;
-            questionWithoutImageText.enabled = true;
-            questionWithoutImageText.text = questionList[currentQuestion].question + "<b>" + questionList[currentQuestion].highlightedText + "</b>";
+            //image.enabled = false;
+            //questionWithImageText.enabled = false;
+            //questionWithoutImageText.enabled = true;
+            //questionWithoutImageText.text = questionList[currentQuestion].question + "<b>" + questionList[currentQuestion].highlightedText + "</b>";
             SetAnswers();
         }
         else
@@ -362,9 +376,22 @@ public class QuizController : MonoBehaviour
         enlargedImagePanel.transform.GetChild(0).GetComponent<RawImage>().texture = tex;
     }
 
+    public void EnlargeImage2()
+    {
+        GetComponent<Stopwatch>().enabled = false;
+        enlargedImagePanel2.SetActive(true);
+        enlargedImagePanel2.transform.GetChild(0).GetComponent<RawImage>().texture = tex;
+    }
+
     public void MinimizeImage()
     {
         enlargedImagePanel.SetActive(false);
+        GetComponent<Stopwatch>().enabled = true;
+    }
+
+    public void MinimizeImage2()
+    {
+        enlargedImagePanel2.SetActive(false);
         GetComponent<Stopwatch>().enabled = true;
     }
 
@@ -380,6 +407,7 @@ public class QuizController : MonoBehaviour
     {
         ChangePrefabs(anwseredQuizPrefab, quizPrefab);
         confirmAnswerButton.SetActive(false);
+        nextQuestionButton.SetActive(true);
     }
 
     public void BackToQuestionInfo()
