@@ -140,9 +140,9 @@ public class QuizController : MonoBehaviour
         answeredQuestionsOutOfText.text = "<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
         GetComponent<ProgressBar>().Increase(1f / (numberOfQuestions));
         UnclickableButtons();
-        if (questionList[currentQuestion].bonusPic.Length != 0)
+        if (questionList[currentQuestion].picName.Length != 0)
         {
-            string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].bonusPic;
+            string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].picName;
             BonusImage.SetActive(true);
             var rawData = File.ReadAllBytes(filename);
             tex = new Texture2D(0, 0);
@@ -176,9 +176,9 @@ public class QuizController : MonoBehaviour
         ColorOnClick();
         GetComponent<ProgressBar>().Increase(1f / (numberOfQuestions));
         UnclickableButtons();
-        if (questionList[currentQuestion].bonusPic.Length != 0)
+        if (questionList[currentQuestion].picName.Length != 0)
         {
-            string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].bonusPic;
+            string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].picName;
             BonusImage.SetActive(true);
             var rawData = File.ReadAllBytes(filename);
             tex = new Texture2D(0, 0);
@@ -255,13 +255,13 @@ public class QuizController : MonoBehaviour
             questionOutOfQuestionsTextAnwsered.text = "<b>" + questionIndex + " / " + numberOfQuestions + "</b>";
             answeredQuestionsOutOfText.text = "<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
 
-            if (questionList[currentQuestion].bonusPic.Length != 0)
+            if (questionList[currentQuestion].picName.Length != 0)
             {
                 image.enabled = true;
                 questionWithImageText.enabled = true;
                 questionWithoutImageText.enabled = false;
                 questionWithImageText.text = questionList[currentQuestion].question + "<b>" + questionList[currentQuestion].highlightedText + "</b>";
-                string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].bonusPic;
+                string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].picName;
                 var rawData = File.ReadAllBytes(filename);
                 tex = new Texture2D(0, 0);
                 tex.LoadImage(rawData);
@@ -347,9 +347,8 @@ public class QuizController : MonoBehaviour
             int correctOpt = int.Parse(parts[6]);
             string bonusInfo = parts[7];
             string picName = parts[8];
-            string bonusPic = parts[9];
 
-            Question newQuestion = new Question(themeName, questionText, highlitedText, opt1, opt2, opt3, correctOpt, bonusInfo, picName, bonusPic);
+            Question newQuestion = new Question(themeName, questionText, highlitedText, opt1, opt2, opt3, correctOpt, bonusInfo, picName);
             questionList.Add(newQuestion);
         }
         return questionList;

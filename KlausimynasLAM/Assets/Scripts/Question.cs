@@ -13,9 +13,7 @@ public class Question
     public int correctOpt { get; set; }
     public string bonusInfo { get; set; }
     public string picName { get; set; }
-    public string bonusPic { get; set; }
-
-    public Question(string t, string q, string qh, string o1, string o2, string o3, int c, string bonus, string pic, string bonuspic)
+    public Question(string t, string q, string qh, string o1, string o2, string o3, int c, string bonus, string pic)
     {
         themeName = t;
         question = q;
@@ -26,7 +24,6 @@ public class Question
         correctOpt = c;
         bonusInfo = bonus;
         picName = pic;
-        bonusPic = bonuspic;
     }
     public string ReturnCorrectOptText()
     {
