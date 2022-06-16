@@ -169,6 +169,7 @@ public class QuizController : MonoBehaviour
         GetComponent<Stopwatch>().enabled = false;
         BonusInfoCorrect.text = "<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
         BonusTextPanel.SetActive(true);
+        GetComponent<Scrollbar>().value = 1;
     }
 
     public void Wrong()
@@ -206,6 +207,7 @@ public class QuizController : MonoBehaviour
         GetComponent<Stopwatch>().enabled = false;
         BonusInfoCorrect.text = "<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
         BonusTextPanel.SetActive(true);
+        GetComponent<Scrollbar>().value = 1;
     }
 
     IEnumerator Wait()
