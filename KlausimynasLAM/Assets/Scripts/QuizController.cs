@@ -141,18 +141,27 @@ public class QuizController : MonoBehaviour
         UnclickableButtons();
         if (questionList[currentQuestion].picName.Length != 0)
         {
-            //string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].picName;
-            //BonusImage.SetActive(true);
-            //var rawData = File.ReadAllBytes(filename);
-            //tex = new Texture2D(0, 0);
-            //tex.LoadImage(rawData);
-            //BonusImage.GetComponent<RawImage>().texture = tex;
-            string filename = Application.persistentDataPath + "Images/" + questionList[currentQuestion].picName;
-            BonusImage.SetActive(true);
-            var rawData = File.ReadAllBytes(filename);
-            tex = new Texture2D(0, 0);
-            tex.LoadImage(rawData);
-            BonusImage.GetComponent<RawImage>().texture = tex;
+            string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].picName;
+            if (File.Exists(filename))
+            {
+                BonusImage.SetActive(true);
+                var rawData = File.ReadAllBytes(filename);
+                tex = new Texture2D(0, 0);
+                tex.LoadImage(rawData);
+                BonusImage.GetComponent<RawImage>().texture = tex;
+            }
+            else
+            {
+                string androidFilePath = Application.persistentDataPath + "Images/" + questionList[currentQuestion].picName;
+                BonusImage.SetActive(true);
+                var rawData = File.ReadAllBytes(androidFilePath);
+                tex = new Texture2D(0, 0);
+                tex.LoadImage(rawData);
+                BonusImage.GetComponent<RawImage>().texture = tex;
+            }
+
+            float aspectRatio = (float)tex.width / tex.height;
+            BonusImage.GetComponent<AspectRatioFitter>().aspectRatio = aspectRatio;
         }
         else
         {
@@ -169,7 +178,6 @@ public class QuizController : MonoBehaviour
         GetComponent<Stopwatch>().enabled = false;
         BonusInfoCorrect.text = "<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
         BonusTextPanel.SetActive(true);
-        GetComponent<Scrollbar>().value = 1;
     }
 
     public void Wrong()
@@ -179,18 +187,27 @@ public class QuizController : MonoBehaviour
         UnclickableButtons();
         if (questionList[currentQuestion].picName.Length != 0)
         {
-            //string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].picName;
-            //BonusImage.SetActive(true);
-            //var rawData = File.ReadAllBytes(filename);
-            //tex = new Texture2D(0, 0);
-            //tex.LoadImage(rawData);
-            //BonusImage.GetComponent<RawImage>().texture = tex;
-            string filename = Application.persistentDataPath + "Images/" + questionList[currentQuestion].picName;
-            BonusImage.SetActive(true);
-            var rawData = File.ReadAllBytes(filename);
-            tex = new Texture2D(0, 0);
-            tex.LoadImage(rawData);
-            BonusImage.GetComponent<RawImage>().texture = tex;
+            string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].picName;
+            if (File.Exists(filename))
+            {
+                BonusImage.SetActive(true);
+                var rawData = File.ReadAllBytes(filename);
+                tex = new Texture2D(0, 0);
+                tex.LoadImage(rawData);
+                BonusImage.GetComponent<RawImage>().texture = tex;
+            }
+            else
+            {
+                string androidFilePath = Application.persistentDataPath + "Images/" + questionList[currentQuestion].picName;
+                BonusImage.SetActive(true);
+                var rawData = File.ReadAllBytes(androidFilePath);
+                tex = new Texture2D(0, 0);
+                tex.LoadImage(rawData);
+                BonusImage.GetComponent<RawImage>().texture = tex;
+            }
+
+            float aspectRatio = (float)tex.width / tex.height;
+            BonusImage.GetComponent<AspectRatioFitter>().aspectRatio = aspectRatio;
         }
         else
         {
@@ -207,7 +224,6 @@ public class QuizController : MonoBehaviour
         GetComponent<Stopwatch>().enabled = false;
         BonusInfoCorrect.text = "<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
         BonusTextPanel.SetActive(true);
-        GetComponent<Scrollbar>().value = 1;
     }
 
     IEnumerator Wait()
@@ -260,6 +276,30 @@ public class QuizController : MonoBehaviour
 
             if (questionList[currentQuestion].picName.Length != 0)
             {
+                image.enabled = true;
+                questionWithImageText.enabled = true;
+                questionWithoutImageText.enabled = false;
+                questionWithImageText.text = questionList[currentQuestion].question + "<b>" + questionList[currentQuestion].highlightedText + "</b>";
+                string filename = Application.streamingAssetsPath + "/Images/" + questionList[currentQuestion].picName;
+
+                if (File.Exists(filename))
+                {
+                    var rawData = File.ReadAllBytes(filename);
+                    tex = new Texture2D(0, 0);
+                    tex.LoadImage(rawData);
+                    image.texture = tex;
+                }
+                else
+                {
+                    string androidFilePath = Application.persistentDataPath + "Images/" + questionList[currentQuestion].picName;
+                    var rawData = File.ReadAllBytes(androidFilePath);
+                    tex = new Texture2D(0, 0);
+                    tex.LoadImage(rawData);
+                    image.texture = tex;
+                }
+
+                float aspectRatio = (float)tex.width / tex.height;
+                image.GetComponent<AspectRatioFitter>().aspectRatio = aspectRatio;
                 //image.enabled = true;
                 //questionWithImageText.enabled = true;
                 //questionWithoutImageText.enabled = false;
@@ -269,15 +309,6 @@ public class QuizController : MonoBehaviour
                 //tex = new Texture2D(0, 0);
                 //tex.LoadImage(rawData);
                 //image.texture = tex;
-                image.enabled = true;
-                questionWithImageText.enabled = true;
-                questionWithoutImageText.enabled = false;
-                questionWithImageText.text = questionList[currentQuestion].question + "<b>" + questionList[currentQuestion].highlightedText + "</b>";
-                string filename = Application.persistentDataPath + "Images/" + questionList[currentQuestion].picName;
-                var rawData = File.ReadAllBytes(filename);
-                tex = new Texture2D(0, 0);
-                tex.LoadImage(rawData);
-                image.texture = tex;
             } 
             else
             {
@@ -380,14 +411,18 @@ public class QuizController : MonoBehaviour
     {
         GetComponent<Stopwatch>().enabled = false;
         enlargedImagePanel.SetActive(true);
-        enlargedImagePanel.transform.GetChild(0).GetComponent<RawImage>().texture = tex;
+        enlargedImagePanel.transform.GetChild(0).transform.GetChild(0).GetComponent<RawImage>().texture = tex;
+        float aspectRatio = (float)tex.width / tex.height;
+        enlargedImagePanel.transform.GetChild(0).transform.GetChild(0).GetComponent<AspectRatioFitter>().aspectRatio = aspectRatio;
     }
 
     public void EnlargeImage2()
     {
         GetComponent<Stopwatch>().enabled = false;
         enlargedImagePanel2.SetActive(true);
-        enlargedImagePanel2.transform.GetChild(0).GetComponent<RawImage>().texture = tex;
+        enlargedImagePanel2.transform.GetChild(0).transform.GetChild(0).GetComponent<RawImage>().texture = tex;
+        float aspectRatio = (float)tex.width / tex.height;
+        enlargedImagePanel2.transform.GetChild(0).transform.GetChild(0).GetComponent<AspectRatioFitter>().aspectRatio = aspectRatio;
     }
 
     public void MinimizeImage()
