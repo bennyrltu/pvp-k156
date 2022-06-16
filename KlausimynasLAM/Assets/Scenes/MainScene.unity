@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -194,6 +194,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1823147c32709948817e944e6ff1620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &863279576 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6266413693480658502, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
+  m_PrefabInstance: {fileID: 1976301695}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &900636783
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -316,6 +321,18 @@ PrefabInstance:
     - target: {fileID: 3448166764179683568, guid: acca47585c8ba3f4eba2e2ce3e6aad0b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615428364853981653, guid: acca47585c8ba3f4eba2e2ce3e6aad0b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615428364853981653, guid: acca47585c8ba3f4eba2e2ce3e6aad0b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615428364853981653, guid: acca47585c8ba3f4eba2e2ce3e6aad0b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -0.022979736
       objectReference: {fileID: 0}
     - target: {fileID: 3701069066982674200, guid: acca47585c8ba3f4eba2e2ce3e6aad0b, type: 3}
       propertyPath: m_ScreenMatchMode
@@ -1437,6 +1454,7 @@ MonoBehaviour:
   SeeResults: {fileID: 1976301702}
   confirmAnswerButton: {fileID: 900636787}
   nextQuestionButton: {fileID: 900636788}
+  TextToHide: {fileID: 863279576}
 --- !u!4 &1603855299
 Transform:
   m_ObjectHideFlags: 0
@@ -1590,6 +1608,10 @@ PrefabInstance:
     - target: {fileID: 786615085626079500, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1149065913378765586, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1168756589094091577, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
       propertyPath: m_Size
@@ -1923,6 +1945,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 720.001
       objectReference: {fileID: 0}
+    - target: {fileID: 4272769592626099008, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4811986842966816667, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -1954,6 +1980,10 @@ PrefabInstance:
     - target: {fileID: 6884911289552640109, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
       propertyPath: m_MatchWidthOrHeight
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482646774142668512, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7496870478143366463, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2037,7 +2067,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7833016754565963397, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 999
       objectReference: {fileID: 0}
     - target: {fileID: 7885457224763200495, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
       propertyPath: m_AnchorMax.y

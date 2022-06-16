@@ -114,6 +114,12 @@ public class QuizController : MonoBehaviour
     [SerializeField]
     GameObject nextQuestionButton;
 
+
+    //NEW
+    [SerializeField]
+    GameObject TextToHide;
+
+
     void Start()
     {
         // androidui
@@ -419,6 +425,7 @@ public class QuizController : MonoBehaviour
     public void EnlargeImage2()
     {
         GetComponent<Stopwatch>().enabled = false;
+        TextToHide.SetActive(false);
         enlargedImagePanel2.SetActive(true);
         enlargedImagePanel2.transform.GetChild(0).transform.GetChild(0).GetComponent<RawImage>().texture = tex;
         float aspectRatio = (float)tex.width / tex.height;
@@ -434,6 +441,7 @@ public class QuizController : MonoBehaviour
     public void MinimizeImage2()
     {
         enlargedImagePanel2.SetActive(false);
+        TextToHide.SetActive(true);
         GetComponent<Stopwatch>().enabled = true;
     }
 
