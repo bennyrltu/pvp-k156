@@ -32,6 +32,7 @@ ScriptsOnlyBuild:
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.AspectRatioFitter
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.ContentSizeFitter
@@ -73,53 +74,55 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1468}
     - Class: 114
-      Script: {instanceID: 1512}
+      Script: {instanceID: 1470}
     - Class: 114
-      Script: {instanceID: 1668}
+      Script: {instanceID: 1546}
     - Class: 114
-      Script: {instanceID: 1750}
+      Script: {instanceID: 1698}
     - Class: 114
-      Script: {instanceID: 2038}
+      Script: {instanceID: 1780}
     - Class: 114
-      Script: {instanceID: 2352}
+      Script: {instanceID: 2062}
     - Class: 114
-      Script: {instanceID: 2462}
+      Script: {instanceID: 2372}
     - Class: 114
-      Script: {instanceID: 2468}
+      Script: {instanceID: 2480}
     - Class: 114
-      Script: {instanceID: 2512}
+      Script: {instanceID: 2486}
     - Class: 114
-      Script: {instanceID: 2656}
+      Script: {instanceID: 2530}
     - Class: 114
-      Script: {instanceID: 2832}
+      Script: {instanceID: 2674}
     - Class: 114
-      Script: {instanceID: 2842}
+      Script: {instanceID: 2848}
     - Class: 114
-      Script: {instanceID: 2882}
+      Script: {instanceID: 2858}
     - Class: 114
-      Script: {instanceID: 2922}
+      Script: {instanceID: 2898}
     - Class: 114
-      Script: {instanceID: 3082}
+      Script: {instanceID: 2938}
     - Class: 114
-      Script: {instanceID: 3140}
+      Script: {instanceID: 3094}
     - Class: 114
-      Script: {instanceID: 3190}
+      Script: {instanceID: 3152}
     - Class: 114
-      Script: {instanceID: 3224}
+      Script: {instanceID: 3202}
     - Class: 114
-      Script: {instanceID: 3784}
+      Script: {instanceID: 3236}
     - Class: 114
-      Script: {instanceID: 3864}
+      Script: {instanceID: 3794}
     - Class: 114
-      Script: {instanceID: 3882}
+      Script: {instanceID: 3874}
     - Class: 114
-      Script: {instanceID: 3938}
+      Script: {instanceID: 3892}
     - Class: 114
-      Script: {instanceID: 3950}
+      Script: {instanceID: 3946}
     - Class: 114
-      Script: {instanceID: 4154}
+      Script: {instanceID: 3958}
     - Class: 114
-      Script: {instanceID: 4186}
+      Script: {instanceID: 4162}
+    - Class: 114
+      Script: {instanceID: 4194}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -157,6 +160,12 @@ ScriptsOnlyBuild:
     className: GraphicRaycaster
   - hash:
       serializedVersion: 2
+      Hash: cf9f5cf2c3145a37ac07f00e50e460f9
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: AspectRatioFitter
+  - hash:
+      serializedVersion: 2
       Hash: 5ab533713adae59372fb3e10a585c186
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -173,12 +182,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_InputField
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: LeanTween
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -247,22 +250,10 @@ ScriptsOnlyBuild:
     className: PlaymodeTestsController
   - hash:
       serializedVersion: 2
-      Hash: 95ec224267fd8ec8ff7e3aa2b94fe503
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Popup
-  - hash:
-      serializedVersion: 2
       Hash: a1aa98c78061c6f03a8c124cda576e67
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: CanvasScaler
-  - hash:
-      serializedVersion: 2
-      Hash: cf9f5cf2c3145a37ac07f00e50e460f9
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: AspectRatioFitter
   - hash:
       serializedVersion: 2
       Hash: d344f4887fe1754bd8f1efe29ab069b8
@@ -337,12 +328,6 @@ ScriptsOnlyBuild:
     className: TestResultRendererCallback
   - hash:
       serializedVersion: 2
-      Hash: 7dba6c00c17be34f3653246997973d20
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: SubmitUsername
-  - hash:
-      serializedVersion: 2
       Hash: 748dd2a2a28da4e618912da5ac45684b
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
@@ -397,12 +382,6 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 274136e22aeaee62217e338b2dde90f6
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Leaderboard
-  - hash:
-      serializedVersion: 2
       Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -415,7 +394,7 @@ ScriptsOnlyBuild:
     className: Outline
   - hash:
       serializedVersion: 2
-      Hash: c88e803ee4e042708a2659287d00c2e1
+      Hash: dee16d3b0bd1b9da9f64d155e6b2a378
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: QuizController
@@ -571,12 +550,6 @@ ScriptsOnlyBuild:
     className: TMP_Settings
   - hash:
       serializedVersion: 2
-      Hash: 831f52a3acb95c5b645d6db1d3bf9700
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: GameController
-  - hash:
-      serializedVersion: 2
       Hash: 67c666fccfaacf8bab9eeefecf1f16e7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -638,4 +611,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/Vartotojas/Desktop/builds/b1.apk
+  playerPath: C:/Users/Aorus/Desktop/ANBO Builds/ANBO.apk

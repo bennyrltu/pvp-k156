@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -996,6 +996,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1823147c32709948817e944e6ff1620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1142569581 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1483626700618630513, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
+  m_PrefabInstance: {fileID: 1976301695}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1270954932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1455,6 +1460,7 @@ MonoBehaviour:
   confirmAnswerButton: {fileID: 900636787}
   nextQuestionButton: {fileID: 900636788}
   TextToHide: {fileID: 863279576}
+  scrollRectObject: {fileID: 1142569581}
 --- !u!4 &1603855299
 Transform:
   m_ObjectHideFlags: 0
@@ -1651,7 +1657,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1265607058484462455, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 118.00461
+      value: 118.00469
       objectReference: {fileID: 0}
     - target: {fileID: 1479604811601352590, guid: d9d36f9e034bb874cb2afc33950df256, type: 3}
       propertyPath: m_Spacing

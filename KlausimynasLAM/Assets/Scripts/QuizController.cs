@@ -119,6 +119,8 @@ public class QuizController : MonoBehaviour
     [SerializeField]
     GameObject TextToHide;
 
+    [SerializeField]
+    GameObject scrollRectObject;
 
     void Start()
     {
@@ -171,7 +173,6 @@ public class QuizController : MonoBehaviour
         }
         else
         {
-            //BonusImage.GetComponent<RawImage>().texture = null;
             BonusImage.SetActive(false);
         }
 
@@ -183,7 +184,10 @@ public class QuizController : MonoBehaviour
         questionIndex++;
         GetComponent<Stopwatch>().enabled = false;
         BonusInfoCorrect.text = "<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
+        quizPrefab.SetActive(false);
         BonusTextPanel.SetActive(true);
+
+        scrollRectObject.GetComponent<ScrollRect>().verticalNormalizedPosition = 1f;
     }
 
     public void Wrong()
@@ -217,7 +221,6 @@ public class QuizController : MonoBehaviour
         }
         else
         {
-            //BonusImage.GetComponent<RawImage>().texture = null;
             BonusImage.SetActive(false);
         }
 
@@ -229,7 +232,10 @@ public class QuizController : MonoBehaviour
         questionIndex++;
         GetComponent<Stopwatch>().enabled = false;
         BonusInfoCorrect.text = "<b>" + correctAnswers + "/" + numberOfQuestions + "</b>";
+        quizPrefab.SetActive(false);
         BonusTextPanel.SetActive(true);
+
+        scrollRectObject.GetComponent<ScrollRect>().verticalNormalizedPosition = 1f;
     }
 
     IEnumerator Wait()
